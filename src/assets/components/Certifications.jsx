@@ -8,7 +8,7 @@ const certifications = [
     title: "RHCSA",
     issuer: "Red Hat",
     date: "2023",
-    image: "/billjeff/images/rhcsa.jpg",
+    image: "/images/rhcsa.jpg",
     link: "https://www.credly.com/badges/175f5a3c-d2a4-4fea-aa0c-ce60edc66ce7/print",
   },
   {
@@ -16,7 +16,7 @@ const certifications = [
     title: "Junior Web Programmer",
     issuer: "Badan Nasional Sertifikasi Profesi",
     date: "2024",
-    image: "/billjeff/images/JWP.jpg",
+    image: "/images/JWP.jpg",
     link: "https://drive.google.com/file/d/1O5hIsetlbDPugeD57X8TdZPhrWdSc9WP/view?usp=sharing",
   },
   {
@@ -24,7 +24,7 @@ const certifications = [
     title: "Mentor Web",
     issuer: "Infinite Learning",
     date: "2024",
-    image: "/billjeff/images/sertifmentor.jpg",
+    image: "/images/sertifmentor.jpg",
     // link: "https://www.example.com/cert/fullstack",
   },
   // Add more certifications as needed

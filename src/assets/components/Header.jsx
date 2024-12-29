@@ -60,7 +60,7 @@ const Header = () => {
         </div>
 
         <div className="mx-10 md:mr-10 lg:mr-36 sm:mx-auto md:w-96 lg:w-96 mt-10 md:mt-0" data-aos="fade-left">
-          <img src="/billjeff/images/FotoProfil.jpeg" alt="Profile" className="relative z-10 rounded-full border-4 border-black transition-transform duration-300 hover:scale-110 hover:rounded-full hover:border-kuning" />
+          <img src="/images/FotoProfil.jpeg" alt="Profile" className="relative z-10 rounded-full border-4 border-black transition-transform duration-300 hover:scale-110 hover:rounded-full hover:border-kuning" />
         </div>
       </div>
     </header>
