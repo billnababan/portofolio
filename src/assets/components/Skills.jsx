@@ -11,120 +11,47 @@ function Skills() {
   }, []);
   return (
     <section className="px-10 grid grid-cols-2 lg:grid-cols-5 lg:gap-10 gap-3 justify-center py-10 dark:bg-hitam">
-      <div
-        className="relative px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background group"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
+      <div className="relative px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background group" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
           <path fill="#E65100" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
           <path fill="#FF6D00" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
-          <path
-            fill="#FFF"
-            d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5H24z M32.9,17l0.3-4H24v4H32.9z"
-          ></path>
-          <path
-            fill="#EEE"
-            d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"
-          ></path>
+          <path fill="#FFF" d="M24,25v-4h8.6l-0.7,11.5L24,35.1v-4.2l4.1-1.4l0.3-4.5H24z M32.9,17l0.3-4H24v4H32.9z"></path>
+          <path fill="#EEE" d="M24,30.9v4.2l-7.9-2.6L15.7,27h4l0.2,2.5L24,30.9z M19.1,17H24v-4h-9.1l0.7,12H24v-4h-4.6L19.1,17z"></path>
         </svg>
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          HTML
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">HTML</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
           <path fill="#0277BD" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
           <path fill="#039BE5" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
-          <path
-            fill="#FFF"
-            d="M33.1 13L24 13 24 17 28.9 17 28.6 21 24 21 24 25 28.4 25 28.1 29.5 24 30.9 24 35.1 31.9 32.5 32.6 21 32.6 21z"
-          ></path>
-          <path
-            fill="#EEE"
-            d="M24,13v4h-8.9l-0.3-4H24z M19.4,21l0.2,4H24v-4H19.4z M19.8,27h-4l0.3,5.5l7.9,2.6v-4.2l-4.1-1.4L19.8,27z"
-          ></path>
+          <path fill="#FFF" d="M33.1 13L24 13 24 17 28.9 17 28.6 21 24 21 24 25 28.4 25 28.1 29.5 24 30.9 24 35.1 31.9 32.5 32.6 21 32.6 21z"></path>
+          <path fill="#EEE" d="M24,13v4h-8.9l-0.3-4H24z M19.4,21l0.2,4H24v-4H19.4z M19.8,27h-4l0.3,5.5l7.9,2.6v-4.2l-4.1-1.4L19.8,27z"></path>
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          CSS
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">CSS</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
           <path fill="#ffd600" d="M6,42V6h36v36H6z"></path>
           <path
             fill="#000001"
             d="M29.538 32.947c.692 1.124 1.444 2.201 3.037 2.201 1.338 0 2.04-.665 2.04-1.585 0-1.101-.726-1.492-2.198-2.133l-.807-.344c-2.329-.988-3.878-2.226-3.878-4.841 0-2.41 1.845-4.244 4.728-4.244 2.053 0 3.528.711 4.592 2.573l-2.514 1.607c-.553-.988-1.151-1.377-2.078-1.377-.946 0-1.545.597-1.545 1.377 0 .964.6 1.354 1.985 1.951l.807.344C36.452 29.645 38 30.839 38 33.523 38 36.415 35.716 38 32.65 38c-2.999 0-4.702-1.505-5.65-3.368L29.538 32.947zM17.952 33.029c.506.906 1.275 1.603 2.381 1.603 1.058 0 1.667-.418 1.667-2.043V22h3.333v11.101c0 3.367-1.953 4.899-4.805 4.899-2.577 0-4.437-1.746-5.195-3.368L17.952 33.029z"
           ></path>
         </svg>{" "}
-        <span className=" text-sm md:text-xl font-medium dark:text-background">
-          JavaScript
-        </span>
+        <span className=" text-sm md:text-xl font-medium dark:text-background">JavaScript</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          width="100"
-          height="100"
-          viewBox="0 0 256 135"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 135">
           <defs>
-            <radialGradient
-              id="IconifyId19146aa85848a2db93"
-              cx=".837"
-              cy="-125.811"
-              r="363.057"
-              gradientTransform="translate(76.464 81.918)scale(.463)"
-              gradientUnits="userSpaceOnUse"
-            >
+            <radialGradient id="IconifyId19146aa85848a2db93" cx=".837" cy="-125.811" r="363.057" gradientTransform="translate(76.464 81.918)scale(.463)" gradientUnits="userSpaceOnUse">
               <stop offset="0" stopColor="#FFF" />
               <stop offset=".5" stopColor="#4C6B97" />
               <stop offset="1" stopColor="#231F20" />
             </radialGradient>
           </defs>
-          <ellipse
-            cx="128"
-            cy="67.3"
-            fill="url(#IconifyId19146aa85848a2db93)"
-            rx="128"
-            ry="67.3"
-          />
+          <ellipse cx="128" cy="67.3" fill="url(#IconifyId19146aa85848a2db93)" rx="128" ry="67.3" />
           <ellipse cx="128" cy="67.3" fill="#6181B6" rx="123" ry="62.3" />
           <path
             fill="#FFF"
@@ -135,169 +62,57 @@ function Skills() {
             d="M74.8 48.2c5.6 0 9.3 1 11.2 3.1s2.3 5.6 1.3 10.6c-1 5.2-3 9-5.9 11.2q-4.35 3.3-13.2 3.3h-8.9l5.5-28.2zM39 105h14.7l3.5-17.9h12.6c5.6 0 10.1-.6 13.7-1.8s6.8-3.1 9.8-5.9q3.75-3.45 6-7.5c1.5-2.7 2.6-5.7 3.2-9c1.6-8 .4-14.2-3.5-18.7s-10.1-6.7-18.6-6.7H52.1zm74.3-85.4h14.6l-3.5 17.9h13c8.2 0 13.8 1.4 16.9 4.3s4 7.5 2.8 13.9L151 87.1h-14.8l5.8-29.9c.7-3.4.4-5.7-.7-6.9s-3.6-1.9-7.3-1.9h-11.7l-7.5 38.7h-14.6zm76.2 28.6c5.6 0 9.3 1 11.2 3.1s2.3 5.6 1.3 10.6c-1 5.2-3 9-5.9 11.2q-4.35 3.3-13.2 3.3H174l5.5-28.2zM153.7 105h14.7l3.5-17.9h12.6c5.6 0 10.1-.6 13.7-1.8s6.8-3.1 9.8-5.9q3.75-3.45 6-7.5c1.5-2.7 2.6-5.7 3.2-9c1.6-8 .4-14.2-3.5-18.7s-10.1-6.7-18.6-6.7h-28.3z"
           />
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          PHP
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">PHP</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
-          <path
-            fill="#673ab7"
-            d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z"
-          ></path>
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+          <path fill="#673ab7" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z"></path>
           <path
             fill="#fff"
             d="M33.03,25.6c-0.65-0.9-1.59-1.52-2.8-1.85c0,0,1.02-0.37,1.94-1.75c0.55-0.88,0.83-1.94,0.83-3.18 c0-2.15-0.78-3.8-2.34-4.93C29.1,12.76,27.34,12,24.35,12H15v24h10.43c2.83-0.02,4.96-0.63,6.41-1.8c1.44-1.19,2.16-2.95,2.16-5.3 C34,27.6,33.68,26.5,33.03,25.6z M21,16c0,0,4.17,0,4.25,0c1.52,0,2.75,1.23,2.75,2.75c0,1.52-1.23,2.75-2.75,2.75 c-0.08,0-4.25,0-4.25,0V16z M26,32h-5v-6h5c1.66,0,3,1.34,3,3C29,30.66,27.66,32,26,32z"
           ></path>
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          Bootstrap
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">Bootstrap</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16 "
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16 " xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
           <path
             fill="#00acc1"
             d="M24,9.604c-6.4,0-10.4,3.199-12,9.597c2.4-3.199,5.2-4.398,8.4-3.599 c1.826,0.456,3.131,1.781,4.576,3.247C27.328,21.236,30.051,24,36,24c6.4,0,10.4-3.199,12-9.598c-2.4,3.199-5.2,4.399-8.4,3.6 c-1.825-0.456-3.13-1.781-4.575-3.247C32.672,12.367,29.948,9.604,24,9.604L24,9.604z M12,24c-6.4,0-10.4,3.199-12,9.598 c2.4-3.199,5.2-4.399,8.4-3.599c1.825,0.457,3.13,1.781,4.575,3.246c2.353,2.388,5.077,5.152,11.025,5.152 c6.4,0,10.4-3.199,12-9.598c-2.4,3.199-5.2,4.399-8.4,3.599c-1.826-0.456-3.131-1.781-4.576-3.246C20.672,26.764,17.949,24,12,24 L12,24z"
           ></path>
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          Tailwind
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">Tailwind</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          width="100"
-          height="100"
-          viewBox="0 0 256 264"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 264">
           <path
             fill="#FF2D20"
             d="M255.856 59.62c.095.351.144.713.144 1.077v56.568c0 1.478-.79 2.843-2.073 3.578L206.45 148.18v54.18a4.14 4.14 0 0 1-2.062 3.579l-99.108 57.053c-.227.128-.474.21-.722.299c-.093.03-.18.087-.278.113a4.15 4.15 0 0 1-2.114 0c-.114-.03-.217-.093-.325-.134c-.227-.083-.464-.155-.68-.278L2.073 205.938A4.13 4.13 0 0 1 0 202.36V32.656c0-.372.052-.733.144-1.083c.031-.119.103-.227.145-.346c.077-.216.15-.438.263-.639c.077-.134.19-.242.283-.366c.119-.165.227-.335.366-.48c.119-.118.274-.206.408-.309c.15-.124.283-.258.453-.356h.005L51.613.551a4.14 4.14 0 0 1 4.125 0l49.546 28.526h.01c.165.104.305.232.454.351c.134.103.284.196.402.31c.145.149.248.32.371.484c.088.124.207.232.279.366c.118.206.185.423.268.64c.041.118.113.226.144.35c.095.351.144.714.145 1.078V138.65l41.286-23.773V60.692c0-.36.052-.727.145-1.072c.036-.124.103-.232.144-.35c.083-.217.155-.44.268-.64c.077-.134.19-.242.279-.366c.123-.165.226-.335.37-.48c.12-.118.269-.206.403-.309c.155-.124.289-.258.454-.356h.005l49.551-28.526a4.13 4.13 0 0 1 4.125 0l49.546 28.526c.175.103.309.232.464.35c.128.104.278.197.397.31c.144.15.247.32.37.485c.094.124.207.232.28.366c.118.2.185.423.267.64c.047.118.114.226.145.35m-8.115 55.258v-47.04l-17.339 9.981l-23.953 13.792v47.04l41.297-23.773zm-49.546 85.095V152.9l-23.562 13.457l-67.281 38.4v47.514zM8.259 39.796v160.177l90.833 52.294v-47.505L51.64 177.906l-.015-.01l-.02-.01c-.16-.093-.295-.227-.444-.34c-.13-.104-.279-.186-.392-.3l-.01-.015c-.134-.129-.227-.289-.34-.433c-.104-.14-.227-.258-.31-.402l-.005-.016c-.093-.154-.15-.34-.217-.515c-.067-.155-.154-.3-.196-.464v-.005c-.051-.196-.061-.403-.082-.604c-.02-.154-.062-.309-.062-.464V63.57L25.598 49.772l-17.339-9.97zM53.681 8.893L12.399 32.656l41.272 23.762L94.947 32.65L53.671 8.893zm21.468 148.298l23.948-13.786V39.796L81.76 49.778L57.805 63.569v103.608zM202.324 36.935l-41.276 23.762l41.276 23.763l41.271-23.768zm-4.13 54.676l-23.953-13.792l-17.338-9.981v47.04l23.948 13.787l17.344 9.986zm-94.977 106.006l60.543-34.564l30.264-17.272l-41.246-23.747l-47.489 27.34l-43.282 24.918z"
           />
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          Laravel
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">Laravel</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16 "
-          xmlns="http://www.w3.org/2000/svg"
-          width="100"
-          height="100"
-          viewBox="0 0 256 228"
-        >
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16 " xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 228">
           <path
             fill="#00D8FF"
             d="M210.483 73.824a172 172 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171 171 0 0 0-6.375 5.848a156 156 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a171 171 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a146 146 0 0 0 6.921 2.165a168 168 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a146 146 0 0 0 5.342-4.923a168 168 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145 145 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844m-6.365 70.984q-2.102.694-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14m-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a157 157 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345q.785 3.162 1.386 6.193M87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a157 157 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a135 135 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94M50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a135 135 0 0 1-6.318-1.979m12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144 144 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160 160 0 0 1-1.76-7.887m110.427 27.268a348 348 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381 381 0 0 0-7.365-13.322m-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322 322 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18M82.802 87.83a323 323 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a322 322 0 0 0-7.848 12.897m8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321 321 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147m37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486m52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382 382 0 0 0 7.859-13.026a347 347 0 0 0 7.425-13.565m-16.898 8.101a359 359 0 0 1-12.281 19.815a329 329 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310 310 0 0 1-12.513-19.846h.001a307 307 0 0 1-10.923-20.627a310 310 0 0 1 10.89-20.637l-.001.001a307 307 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329 329 0 0 1 12.335 19.695a359 359 0 0 1 11.036 20.54a330 330 0 0 1-11 20.722m22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026q-.518 2.504-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a161 161 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3M128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86"
           />
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          React Js
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">React Js</span>
       </div>
 
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 48 48"
-        >
-          <path
-            fill="#29b6f6"
-            d="M44,11.11v25.78c0,1.27-0.79,2.4-1.98,2.82l-8.82,4.14L34,33V15L33.2,4.15l8.82,4.14 C43.21,8.71,44,9.84,44,11.11z"
-          ></path>
-          <path
-            fill="#0277bd"
-            d="M9,33.896L34,15V5.353c0-1.198-1.482-1.758-2.275-0.86L4.658,29.239 c-0.9,0.83-0.849,2.267,0.107,3.032c0,0,1.324,1.232,1.803,1.574C7.304,34.37,8.271,34.43,9,33.896z"
-          ></path>
-          <path
-            fill="#0288d1"
-            d="M9,14.104L34,33v9.647c0,1.198-1.482,1.758-2.275,0.86L4.658,18.761 c-0.9-0.83-0.849-2.267,0.107-3.032c0,0,1.324-1.232,1.803-1.574C7.304,13.63,8.271,13.57,9,14.104z"
-          ></path>
+      <div className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background" data-aos="fade-up">
+        <svg className="w-6 h-6 md:w-16 md:h-16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 48 48">
+          <path fill="#29b6f6" d="M44,11.11v25.78c0,1.27-0.79,2.4-1.98,2.82l-8.82,4.14L34,33V15L33.2,4.15l8.82,4.14 C43.21,8.71,44,9.84,44,11.11z"></path>
+          <path fill="#0277bd" d="M9,33.896L34,15V5.353c0-1.198-1.482-1.758-2.275-0.86L4.658,29.239 c-0.9,0.83-0.849,2.267,0.107,3.032c0,0,1.324,1.232,1.803,1.574C7.304,34.37,8.271,34.43,9,33.896z"></path>
+          <path fill="#0288d1" d="M9,14.104L34,33v9.647c0,1.198-1.482,1.758-2.275,0.86L4.658,18.761 c-0.9-0.83-0.849-2.267,0.107-3.032c0,0,1.324-1.232,1.803-1.574C7.304,13.63,8.271,13.57,9,14.104z"></path>
         </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          VS Code
-        </span>
-      </div>
-
-      <div
-        className="px-3 py-2 flex items-center justify-start gap-3 border border-hitam dark:border-background"
-        data-aos="fade-up"
-      >
-        <svg
-          className="w-6 h-6 md:w-16 md:h-16"
-          xmlns="http://www.w3.org/2000/svg"
-          width="100"
-          height="100"
-          viewBox="0 0 256 384"
-        >
-          <path
-            fill="#0ACF83"
-            d="M64 384c35.328 0 64-28.672 64-64v-64H64c-35.328 0-64 28.672-64 64s28.672 64 64 64"
-          />
-          <path
-            fill="#A259FF"
-            d="M0 192c0-35.328 28.672-64 64-64h64v128H64c-35.328 0-64-28.672-64-64"
-          />
-          <path
-            fill="#F24E1E"
-            d="M0 64C0 28.672 28.672 0 64 0h64v128H64C28.672 128 0 99.328 0 64"
-          />
-          <path
-            fill="#FF7262"
-            d="M128 0h64c35.328 0 64 28.672 64 64s-28.672 64-64 64h-64z"
-          />
-          <path
-            fill="#1ABCFE"
-            d="M256 192c0 35.328-28.672 64-64 64s-64-28.672-64-64s28.672-64 64-64s64 28.672 64 64"
-          />
-        </svg>{" "}
-        <span className="text-sm md:text-xl font-medium dark:text-background">
-          Figma
-        </span>
+        <span className="text-sm md:text-xl font-medium dark:text-background">VS Code</span>
       </div>
     </section>
   );

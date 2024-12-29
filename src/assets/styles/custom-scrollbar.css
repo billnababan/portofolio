@@ -1,0 +1,48 @@
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(243, 244, 246, 0.1);
+    border-radius: 10px;
+    margin: 8px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #a855f7, #ec4899);
+    border-radius: 10px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+    transition: all 0.3s ease;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #9333ea, #db2777);
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  
+  /* For Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #a855f7 transparent;
+  }
+  
+  /* Dark mode adjustments */
+  .dark ::-webkit-scrollbar-track {
+    background: rgba(17, 24, 39, 0.1);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #c084fc, #f472b6);
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #a855f7, #ec4899);
+  }
+  
+  
