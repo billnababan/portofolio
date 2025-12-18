@@ -9,6 +9,7 @@ import Footer from "./assets/components/Footer";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import Skills from "./assets/components/Skills";
 import { skillsSection, marqueeList, imgList } from "./assets/data/SkillsSection";
 import MarqueeAnimation from "./assets/components/MarqueeAnimation";
 import parse from "html-react-parser";
@@ -18,29 +19,43 @@ import "./assets/styles/custom-scrollbar.css";
 const App = () => {
   useEffect(() => {
     Aos.init({
-      duration: 1000,
+      duration: 800,
       once: false,
-    });
-  }, []);
+      easing: "ease-out-cubic",
+    })
+  }, [])
 
   return (
-    <div className="cursor-none">
+    <div className="cursor-none scroll-smooth">
+      {/* Custom Cursor */}
       <CustomCursor />
+
+      {/* Navigation */}
       <Navbar />
-      <Header />
-      <About />
-      <section id="skill" className="dark:bg-hitam md:py-10">
-        <div className="mx-10 md:mx-20 md:py-10" data-aos="fade-up">
-          {parse(skillsSection.content)}
-        </div>
-        <MarqueeAnimation imgList={imgList} />
-      </section>
-      {/* <Skills /> */}
-      <Projects />
-      <Certifications />
-      <Footer />
+
+      {/* Main Content */}
+      <main className="relative">
+        {/* Hero Section */}
+        <Header />
+
+        {/* About Section */}
+        <About />
+
+        {/* Skills Section */}
+        <Skills />
+
+        {/* Projects Section */}
+        <Projects />
+
+        {/* Certifications Section */}
+        <Certifications />
+
+        {/* Footer with Contact */}
+        <Footer />
+      </main>
     </div>
-  );
-};
+  )
+}
+
 
 export default App;

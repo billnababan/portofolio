@@ -12,6 +12,8 @@ export default {
         background: "#FBFBFB",
         hitam: "#22282C",
         kuning: "#F8B21A",
+              // tambahkan ini
+      foreground: "#22282C", 
       },
     },
   },
