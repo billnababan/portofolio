@@ -12,7 +12,7 @@
   
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #a855f7, #ec4899);
+    background: linear-gradient(to bottom, #0143fa, #ec4899);
     border-radius: 10px;
     border: 3px solid transparent;
     background-clip: content-box;
@@ -21,7 +21,7 @@
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #9333ea, #db2777);
+    background: linear-gradient(to bottom, #0143fa, #db2777);
     border: 2px solid transparent;
     background-clip: content-box;
   }
@@ -29,7 +29,7 @@
   /* For Firefox */
   * {
     scrollbar-width: thin;
-    scrollbar-color: #a855f7 transparent;
+    scrollbar-color: #0143fa transparent;
   }
   
   /* Dark mode adjustments */
@@ -38,11 +38,11 @@
   }
   
   .dark ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #c084fc, #f472b6);
+    background: linear-gradient(to bottom, #0143fa, #f472b6);
   }
   
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #a855f7, #ec4899);
+    background: linear-gradient(to bottom, #0143fa, #ec4899);
   }
   
   
