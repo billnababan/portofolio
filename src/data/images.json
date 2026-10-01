@@ -1,0 +1,153 @@
+{
+  "profile": {
+    "width": 800,
+    "height": 800,
+    "widths": [
+      320,
+      640,
+      800
+    ],
+    "formats": [
+      "avif",
+      "webp",
+      "jpg"
+    ],
+    "v": "933a176f",
+    "hash": "933a176f9ec23967450ed16925ffc4c5ca612536"
+  },
+  "project-kpp-reminders": {
+    "width": 1920,
+    "height": 911,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "7d3972fa",
+    "hash": "7d3972fa6522d4c15a7941ed2ed8775e9eb41a48"
+  },
+  "project-taskflow": {
+    "width": 1920,
+    "height": 911,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "b8de4437",
+    "hash": "b8de44378adb1c3b42e0bff7bd2f3f46a57ce4ed"
+  },
+  "project-trufflehog": {
+    "width": 1919,
+    "height": 1794,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "fc962448",
+    "hash": "fc962448298802568caf469f09928583193b8832"
+  },
+  "project-collaboration": {
+    "width": 1920,
+    "height": 919,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "09ecd8af",
+    "hash": "09ecd8af84f95d14817ffefb6ee91030f49d8704"
+  },
+  "project-nextjs": {
+    "width": 1920,
+    "height": 1093,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "ccf42461",
+    "hash": "ccf4246125d620b9c3e02560ef6fe99c0d0e38d4"
+  },
+  "project-edepot": {
+    "width": 1920,
+    "height": 855,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "36d3b62d",
+    "hash": "36d3b62d7b52dd03e317045b7f612e32b7797477"
+  },
+  "cert-rhcsa": {
+    "width": 1648,
+    "height": 1276,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "a9f40b3a",
+    "hash": "a9f40b3a936e72d839bc4f1e4553d40a40cc4116"
+  },
+  "cert-jwp": {
+    "width": 1240,
+    "height": 1755,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "10bf1d06",
+    "hash": "10bf1d06fdcedf45dacd0158bca3eb24260eea13"
+  },
+  "cert-mentor": {
+    "width": 1241,
+    "height": 875,
+    "widths": [
+      480,
+      800,
+      1200
+    ],
+    "formats": [
+      "avif",
+      "webp"
+    ],
+    "v": "60a991e3",
+    "hash": "60a991e3c90b1b337754b13acfbb5683b00cde86"
+  }
+}

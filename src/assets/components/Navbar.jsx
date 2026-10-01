@@ -1,140 +1,125 @@
-import { useState, useEffect } from "react"
-import DarkModeToggle from "./DarkModeToggle"
-import { Link } from "react-scroll"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useRef, useState } from "react";
+import DarkModeToggle from "./DarkModeToggle";
+import { Close, Menu } from "./Icons";
+import { person, sections } from "../../data/site";
 
-export default function NavBar() {
-  const [navbar, setNavbar] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState(null);
+  const menuRef = useRef(null);
 
+  // Solid background only after the page has scrolled.
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const navItems = [
-    { name: "About Me", to: "about" },
-    { name: "Skills", to: "skill" },
-    { name: "Projects", to: "projects" },
-    { name: "Certifications", to: "certifications" },
-    { name: "Contact Me!", to: "contact" },
-  ]
+  // Active section = the one crossing the middle of the viewport.
+  useEffect(() => {
+    // The hero (#top) is observed too, so scrolling back up clears the active link.
+    const targets = ["top", ...sections.map((s) => s.id)].map((id) => document.getElementById(id)).filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id === "top" ? null : entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    targets.forEach((t) => observer.observe(t));
+    return () => observer.disconnect();
+  }, []);
+
+  const openMenu = () => menuRef.current?.showModal();
+  const closeMenu = () => menuRef.current?.close();
+
+  const linkClass = (id) =>
+    `inline-flex min-h-[44px] items-center px-3 text-[0.9375rem] font-medium underline-offset-[10px] decoration-2 transition-colors hover:text-ink ${
+      active === id ? "text-ink underline decoration-accent" : "text-muted"
+    }`;
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`w-full fixed z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg" : "bg-transparent"
+    <header
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors ${
+        scrolled ? "border-line bg-paper" : "border-transparent bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
-          <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
-            <Link
-              to="header"
-              smooth={true}
-              duration={500}
-              className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent cursor-pointer"
-            >
-              JEFF
-            </Link>
-          </motion.div>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent"
+      >
+        Skip to content
+      </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navItems.map((item, index) => (
-              <motion.div
-                key={item.to}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link
-                  to={item.to}
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  activeClass="text-blue-600 dark:text-blue-400"
-                  className="relative px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300 cursor-pointer group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-cyan-500 group-hover:w-4/5 group-hover:left-[10%] transition-all duration-300" />
-                </Link>
-              </motion.div>
+      <div className="container-page flex h-16 items-center justify-between gap-4">
+        <a href="#top" className="inline-flex min-h-[44px] items-center gap-2.5 font-semibold tracking-tight">
+          <img src="/images/K.svg" alt="" width="14" height="18" />
+          {person.shortName}
+        </a>
+
+        <nav aria-label="Primary" className="hidden md:block">
+          <ul className="flex items-center">
+            {sections.map((s) => (
+              <li key={s.id}>
+                <a href={`#${s.id}`} className={linkClass(s.id)} aria-current={active === s.id ? "true" : undefined}>
+                  {s.label}
+                </a>
+              </li>
             ))}
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 }}
-              className="ml-4"
-            >
-              <DarkModeToggle />
-            </motion.div>
-          </div>
+          </ul>
+        </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
-            <DarkModeToggle />
-            <button
-              onClick={() => setNavbar(!navbar)}
-              className="relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-            >
-              <motion.span
-                animate={navbar ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="w-5 h-0.5 bg-gray-700 dark:bg-gray-200 rounded-full"
-              />
-              <motion.span
-                animate={navbar ? { opacity: 0, x: -10 } : { opacity: 1, x: 0 }}
-                className="w-5 h-0.5 bg-gray-700 dark:bg-gray-200 rounded-full"
-              />
-              <motion.span
-                animate={navbar ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="w-5 h-0.5 bg-gray-700 dark:bg-gray-200 rounded-full"
-              />
-            </button>
-          </div>
+        <div className="flex items-center gap-1">
+          <DarkModeToggle />
+          <button
+            type="button"
+            onClick={openMenu}
+            aria-haspopup="dialog"
+            aria-controls="mobile-menu"
+            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-sunken md:hidden"
+          >
+            <Menu />
+            Menu
+          </button>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {navbar && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-t border-gray-200 dark:border-gray-700"
+      {/* Mobile menu: full-height native modal dialog (focus contained, Esc closes, focus returns to the button). */}
+      <dialog
+        ref={menuRef}
+        id="mobile-menu"
+        aria-label="Site menu"
+        className="m-0 ml-auto h-dvh max-h-none w-[min(100vw,22rem)] max-w-none border-l border-line bg-paper p-0 text-ink md:hidden"
+      >
+        <div className="flex h-16 items-center justify-end px-5">
+          <button
+            type="button"
+            onClick={closeMenu}
+            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-sunken"
           >
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.to}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
+            <Close />
+            Close
+          </button>
+        </div>
+        <nav aria-label="Site sections">
+          <ul className="px-5">
+            {sections.map((s) => (
+              <li key={s.id} className="border-b border-line">
+                <a
+                  href={`#${s.id}`}
+                  onClick={closeMenu}
+                  aria-current={active === s.id ? "true" : undefined}
+                  className="flex min-h-[56px] items-center text-xl font-medium"
                 >
-                  <Link
-                    to={item.to}
-                    smooth={true}
-                    duration={500}
-                    onClick={() => setNavbar(false)}
-                    className="block px-4 py-3 text-gray-700 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-gray-800 hover:text-blue-600 dark:hover:text-blue-400 rounded-lg transition-all duration-300 cursor-pointer"
-                  >
-                    {item.name}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.nav>
-  )
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </dialog>
+    </header>
+  );
 }

@@ -1,56 +1,31 @@
-import Navbar from "./assets/components/Navbar";
-import Header from "./assets/components/Header";
-import About from "./assets/components/About";
-import CustomCursor from "./assets/components/CustomCursor";
-import Projects from "./assets/components/Projects";
-import Footer from "./assets/components/Footer";
-import Aos from "aos";
-import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { setupReveal } from "./reveal.js";
+import Navbar from "./assets/components/Navbar";
+import Hero from "./assets/components/Hero";
+import Projects from "./assets/components/Projects";
 import Skills from "./assets/components/Skills";
+import About from "./assets/components/About";
 import Certifications from "./assets/components/Certifications";
-import "./assets/styles/custom-scrollbar.css";
+import Contact from "./assets/components/Contact";
+import Footer from "./assets/components/Footer";
 
-const App = () => {
-  useEffect(() => {
-    Aos.init({
-      duration: 800,
-      once: false,
-      easing: "ease-out-cubic",
-    })
-  }, [])
+// Order: reviewers look at projects first.
+export default function App() {
+  // After hydration, so classes added to the DOM never race React.
+  useEffect(setupReveal, []);
 
   return (
-    <div className="cursor-none scroll-smooth">
-      {/* Custom Cursor */}
-      <CustomCursor />
-
-      {/* Navigation */}
+    <>
       <Navbar />
-
-      {/* Main Content */}
-      <main className="relative">
-        {/* Hero Section */}
-        <Header />
-
-        {/* About Section */}
-        <About />
-
-        {/* Skills Section */}
-        <Skills />
-
-        {/* Projects Section */}
+      <main id="main" tabIndex={-1} className="focus:outline-none">
+        <Hero />
         <Projects />
-
-        {/* Certifications Section */}
+        <Skills />
+        <About />
         <Certifications />
-
-        {/* Footer with Contact */}
-        <Footer />
+        <Contact />
       </main>
-    </div>
-  )
+      <Footer />
+    </>
+  );
 }
-
-
-export default App;

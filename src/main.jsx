@@ -1,10 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot, hydrateRoot } from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+const root = document.getElementById("root");
+const app = (
+  <StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </StrictMode>
+);
+
+// Production HTML is prerendered (scripts/prerender.mjs) -> hydrate.
+// `vite dev` serves the empty template -> render.
+if (root.firstElementChild) hydrateRoot(root, app);
+else createRoot(root).render(app);
