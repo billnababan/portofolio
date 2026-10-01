@@ -1,5 +1,3 @@
-"use client"
-
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from "react"
@@ -165,7 +163,7 @@ function About() {
 
             {/* Highlight cards row */}
             <motion.div variants={itemVariants} className="grid sm:grid-cols-2 gap-4">
-              {highlights.map((h, i) => (
+              {highlights.map((h) => (
                 <motion.div
                   key={h.label}
                   whileHover={{ y: -4, scale: 1.02 }}

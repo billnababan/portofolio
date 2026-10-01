@@ -1,10 +1,8 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faUpRightFromSquare, faCircleInfo, faXmark, faArrowRight } from "@fortawesome/free-solid-svg-icons"
+import { faUpRightFromSquare, faXmark, faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 const ProjectsStyles = () => (
   <style>{`

@@ -1,5 +1,3 @@
-"use client"
-
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPaperPlane, faEnvelope, faMapMarkerAlt, faPhone } from "@fortawesome/free-solid-svg-icons"
@@ -173,7 +171,7 @@ export default function Contact() {
               <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
 
               <div className="space-y-5">
-                {contactInfo.map((info, index) => (
+                {contactInfo.map((info) => (
                   <motion.div
                     key={info.label}
                     variants={itemVariants}

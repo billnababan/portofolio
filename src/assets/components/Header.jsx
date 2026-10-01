@@ -1,11 +1,8 @@
-"use client"
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSquareGithub } from "@fortawesome/free-brands-svg-icons"
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin"
 import { faInstagramSquare } from "@fortawesome/free-brands-svg-icons"
-import { useState, useCallback, useRef, memo } from "react"
-import CustomCursor from "./CustomCursor"
+import { useCallback, useRef, memo } from "react"
 import { TypeAnimation } from "react-type-animation"
 import {
   motion,
@@ -173,9 +170,6 @@ StatBadge.displayName = "StatBadge"
    MAIN HEADER
 ───────────────────────────────────────── */
 const Header = () => {
-  const [cursorPosition, setCursorPosition] = useState({ x: null, y: null })
-  const handleCursorMove = useCallback((pos) => setCursorPosition(pos), [])
-
   /* 3D tilt – only runs on user interaction, not looping */
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
@@ -224,8 +218,6 @@ const Header = () => {
           backgroundSize: "36px 36px",
         }}
       />
-
-      <CustomCursor onPositionChange={handleCursorMove} />
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-8 py-20 md:py-0">
