@@ -16,10 +16,10 @@ function validate(values) {
   return errors;
 }
 
-// Fields sit on the fixed dark form card, so colours don't follow the theme.
+// Underlined fields, gravity-style: no boxes, just a line that turns yellow on focus.
 const fieldClass = (hasError) =>
-  `mt-2 block w-full rounded-xl border bg-night-2 px-4 py-3 text-base text-snow transition-colors focus:border-accent ${
-    hasError ? "border-red-300" : "border-night-line hover:border-night-muted"
+  `mt-1 block w-full border-0 border-b-2 bg-transparent px-0 py-3 text-lg text-text transition-colors focus:border-accent focus:outline-none focus:ring-0 focus-visible:outline-none ${
+    hasError ? "border-red-300" : "border-line hover:border-muted"
   }`;
 
 const errorClass = "mt-2 text-sm text-red-300";
@@ -71,51 +71,44 @@ export default function Contact() {
   const describedBy = (name) => (errors[name] ? `${name}-error` : undefined);
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="px-2 pt-2 sm:px-4 sm:pt-4">
-      <div className="rounded-[2rem] bg-accent py-20 text-on-accent md:py-28">
-        <div className="container-page grid grid-cols-1 gap-x-10 gap-y-14 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-5">
-            <h2 id="contact-title" className="section-title">
-              Contact
+    <section id="contact" aria-labelledby="contact-title" className="px-2 pb-2 sm:px-4 sm:pb-4">
+      <div className="rounded-[2rem] bg-raised py-24 md:py-32">
+        <div className="container-page grid grid-cols-1 gap-x-12 gap-y-16 lg:grid-cols-12">
+          <div className="lg:col-span-6">
+            <h2 id="contact-title" className="text-mega font-bold">
+              contact<span className="text-accent">.</span>
             </h2>
-            <p className="mt-6 text-[clamp(1.375rem,1.15rem_+_0.9vw,1.875rem)] font-semibold leading-tight tracking-tight">
+            <p className="mt-8 max-w-[28ch] text-statement font-light">
               Need an API, a database or the app around them? Send me a message.
             </p>
+            <a
+              href={`mailto:${person.email}`}
+              className="group mt-10 inline-flex items-center gap-3 text-[clamp(1.25rem,1rem_+_1.2vw,2rem)] font-medium underline decoration-accent decoration-2 underline-offset-8 transition-colors hover:text-accent"
+            >
+              {person.email}
+              <ArrowUpRight size={24} className="nudge" />
+            </a>
 
-            <dl className="mt-10 space-y-5">
-              <div>
-                <dt className="text-sm font-medium">Email</dt>
-                <dd className="mt-1">
-                  <a href={`mailto:${person.email}`} className="text-lg font-semibold underline decoration-2 underline-offset-[5px] hover:decoration-[3px]">
-                    {person.email}
-                  </a>
-                </dd>
-              </div>
+            <dl className="mt-12 grid gap-6 sm:grid-cols-2">
               {person.phone && (
                 <div>
-                  <dt className="text-sm font-medium">Phone</dt>
+                  <dt className="meta">phone</dt>
                   <dd className="mt-1">
-                    <a href={person.phone.href} className="num text-lg font-semibold underline decoration-2 underline-offset-[5px] hover:decoration-[3px]">
+                    <a href={person.phone.href} className="num link">
                       {person.phone.display}
                     </a>
                   </dd>
                 </div>
               )}
               <div>
-                <dt className="text-sm font-medium">Location</dt>
-                <dd className="mt-1 text-lg font-semibold">{person.location}</dd>
+                <dt className="meta">based in</dt>
+                <dd className="mt-1">{person.location}</dd>
               </div>
-              <div>
-                <dt className="text-sm font-medium">Elsewhere</dt>
-                <dd className="mt-2 flex flex-wrap gap-2">
+              <div className="sm:col-span-2">
+                <dt className="meta">elsewhere</dt>
+                <dd className="mt-1 flex flex-wrap gap-x-5 gap-y-1">
                   {social.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      className="inline-flex min-h-[40px] items-center rounded-full border-2 border-on-accent px-4 font-semibold transition-colors hover:bg-on-accent hover:text-accent"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <a key={s.label} href={s.href} className="link" target="_blank" rel="noopener noreferrer">
                       {s.label}
                       <span className="sr-only"> (opens in a new tab)</span>
                     </a>
@@ -132,13 +125,13 @@ export default function Contact() {
             aria-labelledby="contact-title"
             toolname="send_message"
             tooldescription="Send a message to Bill Jeferson Nababan. Requires the sender's name, email address and message."
-            className="rounded-[1.5rem] bg-night p-6 text-snow shadow-[12px_12px_0_0_rgb(34_40_44/0.25)] sm:p-8 lg:col-span-7"
+            className="lg:col-span-5 lg:col-start-8 lg:pt-6"
             data-reveal
           >
-            <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-8">
               <div>
-                <label htmlFor="name" className="font-medium">
-                  Name
+                <label htmlFor="name" className="meta">
+                  your name
                 </label>
                 <input
                   id="name"
@@ -157,8 +150,8 @@ export default function Contact() {
                 )}
               </div>
               <div>
-                <label htmlFor="email" className="font-medium">
-                  Email
+                <label htmlFor="email" className="meta">
+                  your email
                 </label>
                 <input
                   id="email"
@@ -177,38 +170,37 @@ export default function Contact() {
                   </p>
                 )}
               </div>
-            </div>
-
-            <div className="mt-6">
-              <label htmlFor="message" className="font-medium">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={6}
-                required
-                aria-invalid={errors.message ? "true" : undefined}
-                aria-describedby={describedBy("message")}
-                className={`${fieldClass(errors.message)} resize-y`}
-              />
-              {errors.message && (
-                <p id="message-error" className={errorClass}>
-                  {errors.message}
-                </p>
-              )}
+              <div>
+                <label htmlFor="message" className="meta">
+                  message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  required
+                  aria-invalid={errors.message ? "true" : undefined}
+                  aria-describedby={describedBy("message")}
+                  className={`${fieldClass(errors.message)} resize-y`}
+                />
+                {errors.message && (
+                  <p id="message-error" className={errorClass}>
+                    {errors.message}
+                  </p>
+                )}
+              </div>
             </div>
 
             {/* Honeypot for bots (Web3Forms convention). Hidden from people and assistive tech. */}
             <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} aria-hidden="true" />
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-              <button type="submit" className="btn-primary group min-w-[11rem]" disabled={status === "sending"}>
+            <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+              <button type="submit" className="btn-accent group min-w-[11rem]" disabled={status === "sending"}>
                 {status === "sending" ? "Sending…" : "Send message"}
                 {status !== "sending" && <ArrowUpRight size={18} className="nudge" />}
               </button>
 
-              <div role="status" aria-live="polite" className="font-medium text-ok">
+              <div role="status" aria-live="polite" className="font-medium text-accent">
                 {status === "sent" && "Message sent. Thank you."}
               </div>
             </div>
@@ -216,7 +208,7 @@ export default function Contact() {
               {status === "failed" && (
                 <>
                   The message could not be sent. Try again, or email{" "}
-                  <a href={`mailto:${person.email}`} className="link-night">
+                  <a href={`mailto:${person.email}`} className="link">
                     {person.email}
                   </a>
                   .

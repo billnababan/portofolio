@@ -1,5 +1,17 @@
 # Performance, SEO, accessibility and UI/UX: report
 
+> **Update (redesign v3, gravity style).** The visual design was redone after review, inspired by the awwwards "cursor gravity" piece. The site is now dark-first, with no theme toggle and no inline script.
+> - **Hero:** grayscale portrait with circles that are pulled by the pointer and kicked by a click (`src/gravity.js`).
+> - **Intro:** a large statement paragraph.
+> - **Projects:** a list with a pointer-following preview and a detail dialog.
+> - **About:** a yellow panel reading "~~Frontend~~ Backend developer".
+> - **Skills:** a scroll-linked orbit diagram on cream.
+> - **Certifications:** a dated list.
+> - **Contact:** an underlined form.
+>
+> Re-measured after the redesign (same method, median of 3): mobile 100/100/100/100, Agentic 3/3, FCP 1.27s, LCP 1.55s, TBT 16ms, CLS 0, page weight 125 KB. Desktop 100 everywhere, LCP 0.36s. JS is 61.9 KB gzip. axe: 0 violations. Console clean.
+> The tables below describe the first pass and are kept for history.
+
 Branch `perf-seo-ux`, 1 Oct 2026.
 
 ## How it was measured

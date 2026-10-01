@@ -17,9 +17,9 @@ export const social = [
 
 // Page order = nav order. Ids must match the <section id>s.
 export const sections = [
-  { id: "projects", label: "Projects" },
-  { id: "skills", label: "Skills" },
-  { id: "about", label: "About" },
-  { id: "certifications", label: "Certifications" },
-  { id: "contact", label: "Contact" },
+  { id: "projects", label: "work" },
+  { id: "about", label: "about" },
+  { id: "skills", label: "skills" },
+  { id: "certifications", label: "certifications" },
+  { id: "contact", label: "contact" },
 ];

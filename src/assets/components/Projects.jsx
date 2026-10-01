@@ -1,146 +1,155 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Picture from "./Picture";
 import ImageDialog from "./ImageDialog";
-import { ArrowUpRight, Expand } from "./Icons";
+import { ArrowUpRight } from "./Icons";
 import { projects } from "../../data/projects";
 
-function Screenshot({ project, onOpen, sizes }) {
-  const host = project.sourceUrl ? project.sourceUrl.replace(/^https:\/\//, "") : "private repository";
-
-  return (
-    // Hover/focus: the frame lifts off the same yellow slab used behind the hero photo,
-    // and the screenshot pans to show more of the app.
-    <div className="rounded-2xl bg-accent">
-      <div className="overflow-hidden rounded-2xl border border-line bg-surface transition-transform duration-300 ease-out hover:-translate-x-2 hover:-translate-y-2 focus-within:-translate-x-2 focus-within:-translate-y-2">
-        <div className="flex items-center gap-3 border-b border-line px-4 py-2.5" aria-hidden="true">
-          <span className="flex gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-line-strong/50" />
-            <span className="h-2.5 w-2.5 rounded-full bg-line-strong/50" />
-            <span className="h-2.5 w-2.5 rounded-full bg-line-strong/50" />
-          </span>
-          <span className="min-w-0 truncate rounded-full bg-sunken px-3 py-1 font-mono text-xs text-muted">{host}</span>
-        </div>
-        <button type="button" onClick={() => onOpen(project)} className="shot group relative block w-full text-left">
-          <Picture
-            name={project.image}
-            alt={project.alt}
-            sizes={sizes}
-            maxWidth={800}
-            className="block bg-sunken"
-            imgClassName="aspect-[16/10] h-auto w-full object-cover"
-          />
-          <span className="absolute bottom-3 right-3 inline-flex translate-y-1 items-center gap-1.5 rounded-full bg-night px-3 py-1.5 text-sm font-medium text-snow opacity-90 transition duration-200 group-hover:translate-y-0 group-hover:opacity-100">
-            <Expand size={15} />
-            Enlarge<span className="sr-only"> screenshot of {project.title}</span>
-          </span>
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function Details({ project, featured }) {
-  return (
-    <>
-      {project.role && (
-        <p className="mb-4 flex items-start gap-2.5 text-[0.9375rem]">
-          <span className="shrink-0 rounded-full bg-accent px-2.5 py-0.5 text-sm font-semibold text-on-accent">Role</span>
-          <span className="pt-0.5">{project.role}</span>
-        </p>
-      )}
-      <h3
-        id={`project-${project.id}`}
-        className={`font-bold tracking-tight ${featured ? "text-[clamp(1.75rem,1.4rem_+_1.4vw,2.5rem)] leading-[1.05]" : "text-2xl leading-tight"}`}
-      >
-        {project.title}
-      </h3>
-      <p className={`mt-3 max-w-prose text-muted ${featured ? "text-lead" : ""}`}>{project.summary}</p>
-
-      <ul className="mt-5 flex flex-wrap gap-2" aria-label="Stack">
-        {project.stack.map((t) => (
-          <li key={t} className="rounded-full border border-line px-3 py-1 text-sm">
-            {t}
-          </li>
-        ))}
-      </ul>
-
-      {(project.sourceUrl || project.liveUrl) && (
-        <p className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-          {project.liveUrl && (
-            <a href={project.liveUrl} className="link group inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
-              Live site<span className="sr-only">: {project.title} (opens in a new tab)</span>
-              <ArrowUpRight size={16} className="nudge" />
-            </a>
-          )}
-          {project.sourceUrl && (
-            <a href={project.sourceUrl} className="link group inline-flex items-center gap-1" target="_blank" rel="noopener noreferrer">
-              Source on GitHub<span className="sr-only">: {project.title} (opens in a new tab)</span>
-              <ArrowUpRight size={16} className="nudge" />
-            </a>
-          )}
-        </p>
-      )}
-    </>
-  );
-}
-
+// Index of projects. On devices with a mouse, a screenshot follows the pointer
+// while a row is hovered; clicking a row opens the project with its screenshot.
 export default function Projects() {
   const [open, setOpen] = useState(null);
-  const [featured, ...rest] = projects;
+  const [hovered, setHovered] = useState(null);
+  const previewRef = useRef(null);
+  const listRef = useRef(null);
+
+  useEffect(() => {
+    const list = listRef.current;
+    const preview = previewRef.current;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Ease the preview toward the pointer; the loop stops once it has caught up.
+    let x = 0;
+    let y = 0;
+    let tx = 0;
+    let ty = 0;
+    let frame = 0;
+    const tick = () => {
+      x += (tx - x) * 0.18;
+      y += (ty - y) * 0.18;
+      preview.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+      frame = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(tick) : 0;
+    };
+    const onMove = (e) => {
+      tx = e.clientX;
+      ty = e.clientY;
+      if (!frame) frame = requestAnimationFrame(tick);
+    };
+    list.addEventListener("pointermove", onMove, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      list.removeEventListener("pointermove", onMove);
+    };
+  }, []);
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="section">
+    <section id="projects" aria-labelledby="projects-title" className="pb-28 md:pb-40">
       <div className="container-page">
-        <div className="grid gap-6 lg:grid-cols-12 lg:items-end">
-          <h2 id="projects-title" className="section-title lg:col-span-5">
-            Projects
+        <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-8">
+          <h2 id="projects-title" className="text-display font-semibold">
+            Selected work
           </h2>
-          <p className="max-w-prose text-lead text-muted lg:col-span-7">
-            Web applications I have built, with the stack each one uses and my role where it was a team project. Hover a
-            screenshot to scroll through it, or open it full size.
+          <p className="meta max-w-[34ch]">
+            {projects.length} web applications, with the stack and my role. Open one to see it full size.
           </p>
         </div>
 
-        <article aria-labelledby={`project-${featured.id}`} className="mt-16 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center" data-reveal>
-          <div className="lg:col-span-7">
-            <Screenshot project={featured} onOpen={setOpen} sizes="(min-width: 1152px) 640px, (min-width: 1024px) 56vw, 100vw" />
-          </div>
-          <div className="lg:col-span-5">
-            <Details project={featured} featured />
-          </div>
-        </article>
-
-        <ul className="mt-24 grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2">
-          {rest.map((p, i) => {
-            // With an odd count the last project would sit alone in its row:
-            // give it the wide layout instead, mirrored from the featured one.
-            const wide = rest.length % 2 === 1 && i === rest.length - 1;
-            return wide ? (
-              <li key={p.id} className="md:col-span-2" data-reveal>
-                <article aria-labelledby={`project-${p.id}`} className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-center">
-                  <div className="lg:col-span-7 lg:col-start-6 lg:row-start-1">
-                    <Screenshot project={p} onOpen={setOpen} sizes="(min-width: 1152px) 640px, (min-width: 1024px) 56vw, 100vw" />
-                  </div>
-                  <div className="lg:col-span-5 lg:col-start-1 lg:row-start-1">
-                    <Details project={p} featured />
-                  </div>
-                </article>
-              </li>
-            ) : (
-              <li key={p.id} data-reveal>
-                <article aria-labelledby={`project-${p.id}`}>
-                  <Screenshot project={p} onOpen={setOpen} sizes="(min-width: 1152px) 528px, (min-width: 768px) 46vw, 100vw" />
-                  <div className="mt-8">
-                    <Details project={p} />
-                  </div>
-                </article>
-              </li>
-            );
-          })}
+        <ul ref={listRef} onPointerLeave={() => setHovered(null)}>
+          {projects.map((p) => (
+            <li key={p.id} className="border-b border-line" data-reveal>
+              <button
+                type="button"
+                onClick={() => setOpen(p)}
+                onPointerEnter={() => setHovered(p.id)}
+                onFocus={() => setHovered(null)}
+                className="group grid w-full grid-cols-1 items-center gap-x-8 gap-y-4 py-8 text-left md:grid-cols-12 md:py-10"
+              >
+                {/* Inline screenshot on touch / small screens, where there is no hover preview */}
+                <Picture
+                  name={p.image}
+                  alt=""
+                  sizes="100vw"
+                  maxWidth={800}
+                  className="block overflow-hidden rounded-xl md:hidden"
+                  imgClassName="aspect-[16/10] h-auto w-full object-cover object-left-top"
+                />
+                <span className="md:col-span-7">
+                  <span className="block text-[clamp(1.75rem,1.2rem_+_2.2vw,3.25rem)] font-semibold leading-[1.02] tracking-tight transition-[color,transform] duration-300 group-hover:translate-x-3 group-hover:text-accent">
+                    {p.title}
+                  </span>
+                  {p.role && <span className="meta mt-3 block">role: {p.role.toLowerCase()}</span>}
+                </span>
+                <span className="meta md:col-span-4">{p.stack.join(", ").toLowerCase()}</span>
+                <span className="hidden justify-self-end md:col-span-1 md:flex">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-full border border-line transition-colors duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
+                    <ArrowUpRight size={20} className="nudge" />
+                  </span>
+                </span>
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
 
-      <ImageDialog item={open} onClose={() => setOpen(null)} />
+      {/* Pointer-following preview (decorative; the dialog carries the real image + alt text). */}
+      <div
+        ref={previewRef}
+        aria-hidden="true"
+        className={`cursor-preview pointer-events-none fixed left-0 top-0 z-30 hidden md:block ${hovered ? "opacity-100 [scale:1]" : "opacity-0 [scale:0.85]"}`}
+      >
+        <div className="-translate-y-1/2 translate-x-8 overflow-hidden rounded-2xl border border-line shadow-[0_30px_80px_-20px_rgb(0_0_0/0.7)]">
+          {projects.map((p) => (
+            <Picture
+              key={p.id}
+              name={p.image}
+              alt=""
+              sizes="420px"
+              maxWidth={480}
+              className={hovered === p.id ? "block" : "hidden"}
+              imgClassName="aspect-[16/10] h-auto w-[26rem] object-cover object-left-top"
+            />
+          ))}
+        </div>
+      </div>
+
+      <ImageDialog item={open} onClose={() => setOpen(null)}>
+        {open && (
+          <div className="grid gap-6 p-6 md:grid-cols-12 md:p-8">
+            <div className="md:col-span-7">
+              <p className="max-w-prose text-lead">{open.summary}</p>
+              {open.role && (
+                <p className="meta mt-3">
+                  role: <span className="text-text">{open.role}</span>
+                </p>
+              )}
+            </div>
+            <div className="md:col-span-5">
+              <p className="meta">stack</p>
+              <ul className="mt-2 flex flex-wrap gap-2">
+                {open.stack.map((t) => (
+                  <li key={t} className="rounded-full border border-line px-3 py-1 text-sm">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              {open.sourceUrl && (
+                <a href={open.sourceUrl} target="_blank" rel="noopener noreferrer" className="btn-accent group mt-6">
+                  Source on GitHub
+                  <span className="sr-only"> (opens in a new tab)</span>
+                  <ArrowUpRight size={18} className="nudge" />
+                </a>
+              )}
+              {open.liveUrl && (
+                <a href={open.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-line group ml-3 mt-6">
+                  Live site
+                  <span className="sr-only"> (opens in a new tab)</span>
+                  <ArrowUpRight size={18} className="nudge" />
+                </a>
+              )}
+            </div>
+          </div>
+        )}
+      </ImageDialog>
     </section>
   );
 }

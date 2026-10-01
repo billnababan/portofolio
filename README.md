@@ -33,7 +33,9 @@ npm run share-images   # regenerate public/og.png, apple-touch-icon.png, favicon
 
 **Add or replace an image.** Put the original in `assets-src/images/`, add a line to the `jobs` list in `scripts/optimize-images.mjs`, run `npm run build`. Output files carry a content hash, so they can be cached forever.
 
-**Edit the theme script in `index.html`.** The Content-Security-Policy allows it by SHA-256 hash. The build fails with the new hash if they drift; paste it into `script-src` in `vercel.json`.
+**Hero gravity.** The circles and their home positions are the `bodies` list in `src/assets/components/Hero.jsx`; the physics (spring, pointer pull, collisions, click kick) is in `src/gravity.js`. The loop only runs while something moves and is off under reduced motion.
+
+**Inline scripts.** The CSP allows no inline `<script>`. If you add one, the build fails and prints the SHA-256 hash to add to `script-src` in `vercel.json`.
 
 **Change the sitemap date.** Update `<lastmod>` in `public/sitemap.xml` when the content changes.
 

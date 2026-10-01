@@ -1,129 +1,105 @@
+import { useEffect, useRef } from "react";
 import Picture from "./Picture";
-import { ArrowUpRight, Download } from "./Icons";
+import { GitHubMark, InstagramMark, LinkedInMark } from "./Icons";
+import { createGravity } from "../../gravity";
 import { person, social } from "../../data/site";
 
-const github = social.find((s) => s.label === "GitHub");
-const linkedin = social.find((s) => s.label === "LinkedIn");
+// Also used by scripts/prerender.mjs for the <link rel="preload"> of the portrait.
+export const heroImageSizes = "(min-width: 640px) min(82vh, 760px), 100vw";
 
-// Also used by scripts/prerender.mjs for the <link rel="preload"> of the photo.
-export const heroImageSizes = "(min-width: 448px) 384px, calc(100vw - 4rem)";
+const marks = { GitHub: GitHubMark, LinkedIn: LinkedInMark, Instagram: InstagramMark };
 
-// The profile, as a backend developer would hand it over: an API response.
-// Every value is a fact already stated elsewhere on the page.
-const response = [
-  ["name", '"Bill Jeferson Nababan"'],
-  ["based_in", '"Batam, Indonesia"'],
-  ["focus", '"backend"'],
-  ["stack", '["Node.js", "Express", "React"]'],
-  ["databases", '["MySQL", "PostgreSQL"]'],
-  ["certified", '["RHCSA", "BNSP JWP"]'],
-];
-
-// Literal class names so Tailwind generates them (no inline styles: CSP).
-const lineDelays = [
-  "[animation-delay:650ms]",
-  "[animation-delay:760ms]",
-  "[animation-delay:870ms]",
-  "[animation-delay:980ms]",
-  "[animation-delay:1090ms]",
-  "[animation-delay:1200ms]",
-  "[animation-delay:1310ms]",
-  "[animation-delay:1420ms]",
+// Home positions and looks of the gravity bodies. Literal class names (no inline
+// styles: CSP) so Tailwind generates them. The ring has a hole you can see through.
+const bodies = [
+  { place: "left-[66%] top-[40%] lg:left-[57%] lg:top-[60%] [animation-delay:150ms]", look: "h-24 w-24 sm:h-36 sm:w-36 bg-accent" },
+  { place: "left-[84%] top-[31%] lg:left-[66%] lg:top-[50%] [animation-delay:350ms]", look: "h-7 w-7 sm:h-10 sm:w-10 bg-cream" },
+  { place: "left-[82%] top-[52%] lg:left-[52%] lg:top-[76%] [animation-delay:250ms]", look: "h-16 w-16 sm:h-28 sm:w-28 border-[1rem] sm:border-[1.75rem] border-cream" },
+  { place: "left-[52%] top-[48%] lg:left-[67%] lg:top-[69%] [animation-delay:450ms]", look: "h-4 w-4 sm:h-5 sm:w-5 bg-accent" },
+  { place: "left-[46%] top-[36%] lg:left-[45%] lg:top-[64%] [animation-delay:550ms]", look: "h-3 w-3 sm:h-4 sm:w-4 bg-cream" },
 ];
 
 export default function Hero() {
+  const fieldRef = useRef(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const field = fieldRef.current;
+    const els = [...field.querySelectorAll("[data-body]")];
+    // Start once the CSS drop-in has finished, so measurements are of the resting layout.
+    let stop = () => {};
+    const timer = setTimeout(() => {
+      stop = createGravity(field, els);
+    }, 1200);
+    return () => {
+      clearTimeout(timer);
+      stop();
+    };
+  }, []);
+
   return (
-    <section id="top" aria-labelledby="hero-title" className="px-2 pt-[4.5rem] sm:px-4">
-      <div className="relative overflow-hidden rounded-[2rem] bg-night text-snow">
-        <div className="container-page grid grid-cols-1 gap-x-10 gap-y-20 pb-24 pt-14 md:pt-20 lg:grid-cols-12 lg:items-center lg:pb-28">
-          <div className="lg:col-span-7">
-            <p className="inline-flex items-center gap-2.5 text-night-muted">
-              <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-              Web developer in {person.location}
-            </p>
+    <section id="top" aria-labelledby="hero-title" className="relative h-[100svh] min-h-[640px] overflow-hidden bg-coal">
+      {/* Portrait: grayscale, faded into the page at the edges. */}
+      <div className="absolute inset-x-0 bottom-0 top-14 flex justify-center">
+        <Picture
+          name="profile"
+          alt="Portrait of Bill Jeferson Nababan"
+          sizes={heroImageSizes}
+          priority
+          className="block aspect-square h-full max-h-[760px] max-w-none self-end"
+          imgClassName="h-full w-full object-cover grayscale brightness-[0.5] contrast-[1.2] [mask-image:radial-gradient(closest-side,#000_38%,transparent_96%)]"
+        />
+      </div>
 
-            <h1 id="hero-title" className="mt-6">
-              <span className="block text-display font-bold">
-                Bill Jeferson
-                <br />
-                Nababan
-              </span>
-              <span className="mt-6 block text-[clamp(1.25rem,1.05rem_+_1vw,1.75rem)] font-medium leading-snug tracking-tight text-night-muted">
-                Backend-focused full-stack web developer
-              </span>
-            </h1>
-
-            {/* TODO(owner): confirm this positioning line; it restates what the About section already claims. */}
-            <p className="mt-6 max-w-[36rem] text-lead text-snow/90">
-              I build REST APIs with Node.js and Express, model data in MySQL and PostgreSQL, and write the React front end
-              that uses them.
-            </p>
-
-            <div className="mt-10 flex flex-wrap items-center gap-3">
-              <a href="#projects" className="btn-primary group">
-                View projects
-                <ArrowUpRight size={18} className="nudge rotate-90" />
-              </a>
-              <a href={person.cv.href} download="CV_BillJeferson.pdf" className="btn-ghost-night group">
-                <Download size={18} className="transition-transform duration-200 group-hover:translate-y-0.5" />
-                Download CV <span className="font-normal text-night-muted">(PDF, {person.cv.size})</span>
-              </a>
+      {/* Gravity field: covers the hero so the pointer can reach the bodies from anywhere. */}
+      <div ref={fieldRef} className="absolute inset-0 touch-pan-y" aria-hidden="true">
+        {bodies.map((b, i) => (
+          // outer: anchor + drop-in animation, middle: centring, inner: moved by gravity.js
+          <div key={i} data-body className={`body-in absolute ${b.place}`}>
+            <div className="-translate-x-1/2 -translate-y-1/2">
+              <div data-move className={`rounded-full ${b.look}`} />
             </div>
-
-            <p className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-              <a href={github.href} className="link-night" rel="noopener noreferrer" target="_blank">
-                GitHub<span className="sr-only"> profile (opens in a new tab)</span>
-              </a>
-              <a href={linkedin.href} className="link-night" rel="noopener noreferrer" target="_blank">
-                LinkedIn<span className="sr-only"> profile (opens in a new tab)</span>
-              </a>
-              <a href={`mailto:${person.email}`} className="link-night">
-                {person.email}
-              </a>
-            </p>
           </div>
+        ))}
+      </div>
 
-          <div className="lg:col-span-5">
-            <div className="relative mx-auto w-full max-w-[24rem] lg:mr-0">
-              <div className="relative">
-                {/* Yellow slab behind the portrait: the page's one graphic motif (repeats on project hover). */}
-                <div
-                  className="hero-block absolute inset-0 -translate-x-3 translate-y-5 rotate-[-6deg] rounded-[1.75rem] bg-accent sm:-translate-x-6 sm:translate-y-6"
-                  aria-hidden="true"
-                />
-                <Picture
-                  name="profile"
-                  alt="Portrait of Bill Jeferson Nababan"
-                  sizes={heroImageSizes}
-                  priority
-                  className="relative block overflow-hidden rounded-[1.75rem] bg-night-2"
-                  imgClassName="aspect-[4/5] h-auto w-full object-cover object-[50%_35%]"
-                />
-              </div>
+      <p className="rise-in pointer-events-none absolute right-5 top-[17%] text-right text-lg font-medium leading-snug text-accent [animation-delay:700ms] lg:right-[7%] lg:top-[44%] lg:text-xl">
+        apis, databases
+        <br />
+        and the apps on top
+      </p>
 
-              <figure className="hero-card relative mx-auto -mt-24 w-[92%] sm:absolute sm:-bottom-14 sm:-left-10 sm:mx-0 sm:mt-0 sm:w-[min(21rem,92%)] rounded-2xl border border-night-line bg-night-2 p-4 font-mono text-[12.5px] leading-relaxed shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)]">
-                <figcaption className="sr-only">Profile summary written as an API response</figcaption>
-                <div className="flex items-center justify-between gap-3 border-b border-night-line pb-3">
-                  <span className="truncate">
-                    <span className="font-semibold text-accent">GET</span> /api/bill-jeferson
-                  </span>
-                  <span className="shrink-0 rounded-full bg-ok/15 px-2 py-0.5 text-ok">200 OK</span>
-                </div>
-                <pre className="mt-3 overflow-hidden whitespace-pre-wrap text-night-muted">
-                  <span className={`json-line block ${lineDelays[0]}`}>{"{"}</span>
-                  {response.map(([key, value], i) => (
-                    <span key={key} className={`json-line block pl-4 ${lineDelays[i + 1]}`}>
-                      <span className="text-snow">&quot;{key}&quot;</span>: <span className="text-accent">{value}</span>
-                      {i < response.length - 1 ? "," : ""}
-                    </span>
-                  ))}
-                  <span className={`json-line block ${lineDelays[response.length + 1]}`}>
-                    {"}"}
-                    <span className="caret ml-1 inline-block h-[1.1em] w-[0.55em] translate-y-[0.2em] bg-accent" aria-hidden="true" />
-                  </span>
-                </pre>
-              </figure>
-            </div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10">
+        <div className="container-page pb-5">
+          <h1 id="hero-title" className="pointer-events-auto">
+            <span className="block max-w-[11ch] text-display font-semibold">{person.name}</span>
+            <span className="meta mt-4 block text-base">
+              backend-focused full-stack web developer in {person.location.toLowerCase()}
+            </span>
+          </h1>
+
+          <div className="pointer-events-auto mt-8 flex items-center justify-between gap-4 border-t border-line pt-4">
+            <a href="#projects" className="meta transition-colors hover:text-text">
+              © <span className="num">{__BUILD_YEAR__}</span> bill jeferson, scroll for the work
+            </a>
+            <ul className="flex items-center">
+              {social.map((s) => {
+                const Mark = marks[s.label];
+                return (
+                  <li key={s.label}>
+                    <a
+                      href={s.href}
+                      className="inline-flex h-11 w-11 items-center justify-center rounded-full text-muted transition-colors hover:bg-raised hover:text-accent"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${s.label} (opens in a new tab)`}
+                    >
+                      <Mark />
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

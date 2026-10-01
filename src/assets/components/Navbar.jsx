@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import DarkModeToggle from "./DarkModeToggle";
 import { Close, Menu } from "./Icons";
-import { person, sections } from "../../data/site";
+import { sections } from "../../data/site";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -9,7 +8,7 @@ export default function Navbar() {
   const menuRef = useRef(null);
   const progressRef = useRef(null);
 
-  // Solid background after the page has scrolled, plus the reading-progress bar
+  // Background after the page has scrolled, plus the reading-progress line
   // (transform only, written once per frame through CSSOM).
   useEffect(() => {
     let frame = 0;
@@ -51,40 +50,38 @@ export default function Navbar() {
   const openMenu = () => menuRef.current?.showModal();
   const closeMenu = () => menuRef.current?.close();
 
-  const linkClass = (id) =>
-    `inline-flex min-h-[40px] items-center rounded-full px-4 text-[0.9375rem] font-medium transition-colors ${
-      active === id ? "bg-accent text-on-accent" : "text-muted hover:bg-sunken hover:text-ink"
-    }`;
-
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 border-b transition-colors ${
-        scrolled ? "border-line bg-paper/95 backdrop-blur-sm" : "border-transparent bg-paper"
-      }`}
+      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-300 ${scrolled ? "bg-coal/85 backdrop-blur-md" : "bg-transparent"}`}
     >
-      <span
-        ref={progressRef}
-        className="absolute inset-x-0 bottom-[-1px] h-0.5 origin-left scale-x-0 bg-accent"
-        aria-hidden="true"
-      />
+      <span ref={progressRef} className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent" aria-hidden="true" />
+
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-on-accent"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:font-semibold focus:text-ink"
       >
         Skip to content
       </a>
 
-      <div className="container-page flex h-16 items-center justify-between gap-4">
-        <a href="#top" className="inline-flex min-h-[44px] items-center gap-2.5 font-semibold tracking-tight">
-          <img src="/images/K.svg" alt="" width="14" height="18" />
-          {person.shortName}
+      <div className="container-page flex h-14 items-center justify-between gap-4">
+        <a href="#top" className="inline-flex min-h-[44px] items-center text-lg font-semibold tracking-tight">
+          bill jeferson<span className="text-accent">.</span>
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-1">
             {sections.map((s) => (
               <li key={s.id}>
-                <a href={`#${s.id}`} className={linkClass(s.id)} aria-current={active === s.id ? "true" : undefined}>
+                <a
+                  href={`#${s.id}`}
+                  aria-current={active === s.id ? "true" : undefined}
+                  className={`relative inline-flex min-h-[44px] items-center px-3 text-sm transition-colors hover:text-text ${
+                    active === s.id ? "text-text" : "text-muted"
+                  }`}
+                >
+                  {active === s.id && (
+                    <span className="absolute left-1/2 top-2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-accent" aria-hidden="true" />
+                  )}
                   {s.label}
                 </a>
               </li>
@@ -92,47 +89,49 @@ export default function Navbar() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-1">
-          <DarkModeToggle />
-          <button
-            type="button"
-            onClick={openMenu}
-            aria-haspopup="dialog"
-            aria-controls="mobile-menu"
-            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-sunken md:hidden"
-          >
-            <Menu />
-            Menu
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={openMenu}
+          aria-haspopup="dialog"
+          aria-controls="mobile-menu"
+          className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-full px-3 text-sm md:hidden"
+        >
+          <Menu size={18} />
+          menu
+        </button>
       </div>
 
-      {/* Mobile menu: full-height native modal dialog (focus contained, Esc closes, focus returns to the button). */}
+      {/* Mobile menu: full-screen native modal dialog (focus contained, Esc closes, focus returns to the button). */}
       <dialog
         ref={menuRef}
         id="mobile-menu"
         aria-label="Site menu"
-        className="sheet m-0 ml-auto h-dvh max-h-none w-[min(100vw,22rem)] max-w-none border-l border-line bg-paper p-0 text-ink md:hidden"
+        className="sheet m-0 h-dvh max-h-none w-screen max-w-none bg-coal p-0 text-text md:hidden"
       >
-        <div className="flex h-16 items-center justify-end px-5">
+        <div className="container-page flex h-14 items-center justify-between">
+          <span className="text-lg font-semibold tracking-tight">
+            bill jeferson<span className="text-accent">.</span>
+          </span>
           <button
             type="button"
             onClick={closeMenu}
-            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-md px-2 text-sm font-medium hover:bg-sunken"
+            className="inline-flex h-11 min-w-[44px] items-center justify-center gap-2 rounded-full px-3 text-sm"
           >
-            <Close />
-            Close
+            <Close size={18} />
+            close
           </button>
         </div>
-        <nav aria-label="Site sections">
-          <ul className="px-5">
+        <nav aria-label="Site sections" className="container-page mt-10">
+          <ul>
             {sections.map((s) => (
-              <li key={s.id} className="border-b border-line">
+              <li key={s.id}>
                 <a
                   href={`#${s.id}`}
                   onClick={closeMenu}
                   aria-current={active === s.id ? "true" : undefined}
-                  className={`flex min-h-[60px] items-center text-2xl font-semibold tracking-tight transition-colors hover:text-muted ${active === s.id ? "underline decoration-accent decoration-4 underline-offset-8" : ""}`}
+                  className={`block py-2 text-[clamp(2.5rem,10vw,3.5rem)] font-semibold leading-tight tracking-tight transition-colors hover:text-accent ${
+                    active === s.id ? "text-accent" : ""
+                  }`}
                 >
                   {s.label}
                 </a>

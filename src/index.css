@@ -25,35 +25,7 @@
 @tailwind utilities;
 
 @layer base {
-  /* Light. Contrast on --paper: ink 14.4:1, muted 6.7:1.
-     Accent #F8B21A is 1.8:1 on light surfaces, so it is used only for fills,
-     underlines and the focus ring here — never for text. */
   :root {
-    --paper: 251 251 251;
-    --surface: 255 255 255;
-    --sunken: 242 243 243;
-    --ink: 34 40 44;
-    --muted: 85 94 100;
-    --line: 220 223 225;
-    --line-strong: 140 149 155;
-    --accent: 248 178 26;
-    --accent-hover: 236 164 8;
-    --on-accent: 34 40 44;
-    color-scheme: light;
-  }
-
-  /* Dark, derived from the same ink. Ink 15.6:1, muted 8:1, accent 9.7:1 on --paper. */
-  .dark {
-    --paper: 20 24 26;
-    --surface: 32 38 42;
-    --sunken: 26 31 34;
-    --ink: 238 240 241;
-    --muted: 167 175 180;
-    --line: 51 59 64;
-    --line-strong: 106 116 122;
-    --accent: 248 178 26;
-    --accent-hover: 250 196 77;
-    --on-accent: 34 40 44;
     color-scheme: dark;
   }
 
@@ -63,24 +35,24 @@
   }
 
   body {
-    @apply bg-paper text-ink font-sans antialiased;
+    @apply bg-coal font-sans text-text antialiased;
     font-size: 1rem;
     line-height: 1.6;
   }
 
   section[id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: 4rem;
   }
 
   :focus-visible {
-    outline: 3px solid rgb(var(--accent));
+    outline: 3px solid theme("colors.accent.DEFAULT");
     outline-offset: 3px;
     border-radius: 2px;
   }
 
   ::selection {
-    background: rgb(var(--accent));
-    color: rgb(var(--on-accent));
+    background: theme("colors.accent.DEFAULT");
+    color: theme("colors.ink.DEFAULT");
   }
 
   /* Native <dialog>: block page scroll while one is open. */
@@ -89,7 +61,7 @@
   }
 
   dialog::backdrop {
-    background: rgb(20 24 26 / 0.72);
+    background: rgb(10 12 13 / 0.8);
   }
 
   .num {
@@ -99,89 +71,57 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  .section {
-    @apply py-24 md:py-32;
-  }
-
-  .section-title {
-    @apply text-title font-bold;
-  }
-
-  .section-intro {
-    @apply mt-5 max-w-prose text-lead text-muted;
-  }
-
-  .label {
-    @apply text-sm font-medium text-muted;
+  /* Small lowercase meta text: the quiet voice next to the big type. */
+  .meta {
+    @apply text-sm tracking-[0.02em] text-muted;
   }
 
   .link {
-    @apply font-medium underline decoration-accent decoration-2 underline-offset-[5px] transition-[text-decoration-color,color] hover:decoration-ink;
-  }
-
-  .link-night {
-    @apply font-medium text-snow underline decoration-accent decoration-2 underline-offset-[5px] transition-colors hover:text-accent;
+    @apply underline decoration-accent decoration-2 underline-offset-[5px] transition-colors hover:text-accent;
   }
 
   .btn {
-    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-base font-semibold transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97];
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-base font-medium transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97];
   }
 
-  .btn-primary {
-    @apply btn bg-accent text-on-accent hover:bg-accent-hover;
+  .btn-accent {
+    @apply btn bg-accent text-ink hover:bg-accent-hover;
   }
 
-  .btn-ghost-night {
-    @apply btn border border-night-line text-snow hover:border-snow;
+  .btn-line {
+    @apply btn border border-line text-text hover:border-text;
   }
 
-  .btn-secondary {
-    @apply btn border border-line-strong text-ink hover:border-ink;
+  .btn-ink {
+    @apply btn bg-ink text-cream hover:bg-black;
   }
 
-  .chip {
-    @apply inline-flex min-h-[36px] items-center gap-2 rounded-full border border-line bg-surface px-3.5 text-sm font-medium;
-  }
-
-  /* Arrow that nudges on hover of its parent .group */
   .nudge {
     @apply transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5;
   }
 }
 
 /* ───────────── Motion ─────────────
-   One load sequence in the hero (CSS only, runs before JS), scroll reveals
-   with stagger, and motion that answers the user (hover, dialogs).
-   Everything is off under prefers-reduced-motion. The h1 and the hero photo
-   are never hidden, so LCP does not wait for an animation. */
+   The signature moment is the gravity field in the hero (src/gravity.js), driven by
+   the visitor's pointer. Around it: one CSS load sequence, scroll reveals, a
+   scroll-linked orbit, and motion that answers clicks (dialogs, menu).
+   All of it is off under prefers-reduced-motion. The h1 and the portrait are never
+   hidden, so LCP never waits for an animation. */
 
-@keyframes block-in {
+@keyframes drop-in {
   from {
-    transform: translate(-6%, 8%) rotate(0deg) scale(0.85);
     opacity: 0;
+    transform: translateY(-48px) scale(0.5);
   }
 }
 
 @keyframes rise {
   from {
     opacity: 0;
-    transform: translateY(18px);
-  }
-}
-
-@keyframes line-in {
-  from {
-    opacity: 0;
-    transform: translateX(-8px);
-  }
-}
-
-@keyframes caret {
-  50% {
-    opacity: 0;
+    transform: translateY(20px);
   }
 }
 
@@ -200,75 +140,77 @@
 
 @keyframes sheet-in {
   from {
-    transform: translateX(100%);
+    transform: translateY(-100%);
   }
 }
 
-.hero-block {
-  animation: block-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 100ms both;
+/* Gravity bodies drop into place on load (CSS, before JS); JS then takes over
+   by moving the inner element, so the two never fight over `transform`. */
+.body-in {
+  animation: drop-in 1000ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.hero-card {
-  animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 350ms both;
-}
-
-.hero-card .json-line {
-  animation: line-in 380ms ease-out both;
-}
-
-.caret {
-  animation: caret 1s steps(1) 2.4s 4;
+.rise-in {
+  animation: rise 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
 dialog[open] {
-  animation: dialog-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: dialog-in 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 dialog[open]::backdrop {
-  animation: backdrop-in 260ms ease-out;
+  animation: backdrop-in 280ms ease-out;
 }
 
 dialog.sheet[open] {
-  animation: sheet-in 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  animation: sheet-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* Scroll reveal (src/reveal.js adds .reveal only to elements below the fold) */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(28px);
 }
 
 .reveal.is-in {
   opacity: 1;
   transform: none;
   transition:
-    opacity 600ms ease-out,
-    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    opacity 700ms ease-out,
+    transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Timeline rail draws itself when the list scrolls in */
-.rail {
-  transform-origin: top;
-  transition: transform 1400ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms;
+/* Strike-through drawn across a word when its block scrolls in */
+.strike {
+  position: relative;
+  white-space: nowrap;
 }
 
-.reveal .rail {
-  transform: scaleY(0);
+.strike::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  top: 50%;
+  height: 0.09em;
+  background: currentColor;
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(0.65, 0, 0.35, 1) 350ms;
 }
 
-.reveal.is-in .rail {
+.reveal .strike::after {
+  transform: scaleX(0);
+}
+
+.reveal.is-in .strike::after {
   transform: none;
 }
 
-/* Project screenshot pans to show more of the app on hover / keyboard focus */
-.shot img {
-  object-position: 0% 0%;
-  transition: object-position 3.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.shot:hover img,
-.shot:focus-visible img {
-  object-position: 100% 100%;
+/* Project list: preview that follows the pointer (src/assets/components/Projects.jsx) */
+.cursor-preview {
+  transition:
+    opacity 200ms ease-out,
+    scale 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -277,7 +219,7 @@ dialog.sheet[open] {
   }
 
   .reveal,
-  .reveal .rail {
+  .reveal .strike::after {
     opacity: 1;
     transform: none;
   }

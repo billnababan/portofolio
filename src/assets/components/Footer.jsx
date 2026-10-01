@@ -2,31 +2,28 @@ import { person, social } from "../../data/site";
 
 export default function Footer() {
   return (
-    <footer className="py-10">
-      <div className="container-page flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="flex items-center gap-3 text-muted">
-          <img src="/images/K.svg" alt="" width="14" height="18" />
-          <span>
-            © <span className="num">{__BUILD_YEAR__}</span> {person.name}
-          </span>
+    <footer className="py-8">
+      <div className="container-page flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <p className="meta">
+          © <span className="num">{__BUILD_YEAR__}</span> bill jeferson, built in {person.location.split(",")[0].toLowerCase()}
         </p>
-        <ul className="flex flex-wrap gap-x-6 gap-y-2 text-muted">
+        <ul className="meta flex flex-wrap gap-x-6 gap-y-2">
           {social.map((s) => (
             <li key={s.label}>
-              <a href={s.href} className="transition-colors hover:text-ink" target="_blank" rel="noopener noreferrer">
-                {s.label}
+              <a href={s.href} className="transition-colors hover:text-accent" target="_blank" rel="noopener noreferrer">
+                {s.label.toLowerCase()}
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </li>
           ))}
           <li>
-            <a href={person.cv.href} className="transition-colors hover:text-ink" download="CV_BillJeferson.pdf">
-              CV (PDF)
+            <a href={person.cv.href} className="transition-colors hover:text-accent" download="CV_BillJeferson.pdf">
+              cv (pdf)
             </a>
           </li>
           <li>
-            <a href="#top" className="transition-colors hover:text-ink">
-              Back to top
+            <a href="#top" className="transition-colors hover:text-accent">
+              back to top
             </a>
           </li>
         </ul>
