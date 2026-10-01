@@ -1,0 +1,28 @@
+# Bill Jeferson Nababan
+
+> Web developer in Batam, Indonesia. Backend-focused full stack: REST APIs in Node.js and Express, data in MySQL and PostgreSQL (some MongoDB), and React front ends. Studied Informatics Engineering at Batam State Polytechnic. Certified RHCSA (Red Hat, 2023) and Junior Web Programmer (BNSP, 2024).
+
+This site is a single page. Each section below is an anchor on it.
+
+## Site
+
+- [Projects](https://billjeferson.vercel.app/#projects): six web applications with stack, role and source links
+- [Skills](https://billjeferson.vercel.app/#skills): languages, frameworks, databases and tools
+- [About](https://billjeferson.vercel.app/#about): background, education and focus
+- [Certifications](https://billjeferson.vercel.app/#certifications): RHCSA, BNSP Junior Web Programmer, Infinite Learning Web Technical Mentor
+- [Contact](https://billjeferson.vercel.app/#contact): contact form and email address
+- [CV (PDF)](https://billjeferson.vercel.app/images/CV_BillJeferson.pdf): résumé
+
+## Project source code
+
+- [Reminder app for Kalimantan Prima Persada](https://github.com/billnababan/RemindersAppsKppPrima): React, Express, MySQL
+- [TaskFlow, task management system (client)](https://github.com/billnababan/WebBasedProjecAndAssigmentClient): React, Express, MySQL, Socket.io
+- [Web-based project collaboration (server)](https://github.com/billnababan/WebBasedProjecAndAssigmentServer): Express, MySQL; back-end role
+- [Trufflehog repository scanner](https://github.com/billnababan/Client-Scan): React, Express, MySQL
+- [Minutes archiving site](https://github.com/billnababan/next-js-simpel-project): Next.js, MySQL; back-end role
+
+## Profiles
+
+- [GitHub](https://github.com/billnababan)
+- [LinkedIn](https://www.linkedin.com/in/bill-jeferson-nababan-4878a9244/)
+- [Email](mailto:billnbbn@gmail.com)
