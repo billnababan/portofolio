@@ -103,31 +103,39 @@
   }
 
   .section {
-    @apply border-t border-line py-20 md:py-28;
+    @apply py-24 md:py-32;
   }
 
   .section-title {
-    @apply text-title font-semibold;
+    @apply text-title font-bold;
   }
 
   .section-intro {
-    @apply mt-4 max-w-prose text-lead text-muted;
+    @apply mt-5 max-w-prose text-lead text-muted;
   }
 
-  .eyebrow {
-    @apply text-sm font-medium uppercase tracking-[0.12em] text-muted;
+  .label {
+    @apply text-sm font-medium text-muted;
   }
 
   .link {
-    @apply font-medium underline decoration-accent decoration-2 underline-offset-4 transition-colors hover:decoration-ink;
+    @apply font-medium underline decoration-accent decoration-2 underline-offset-[5px] transition-[text-decoration-color,color] hover:decoration-ink;
+  }
+
+  .link-night {
+    @apply font-medium text-snow underline decoration-accent decoration-2 underline-offset-[5px] transition-colors hover:text-accent;
   }
 
   .btn {
-    @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-md px-5 text-base font-semibold transition-colors;
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-base font-semibold transition-[background-color,border-color,color,transform] duration-200 active:scale-[0.97];
   }
 
   .btn-primary {
     @apply btn bg-accent text-on-accent hover:bg-accent-hover;
+  }
+
+  .btn-ghost-night {
+    @apply btn border border-night-line text-snow hover:border-snow;
   }
 
   .btn-secondary {
@@ -135,23 +143,132 @@
   }
 
   .chip {
-    @apply inline-flex min-h-[36px] items-center gap-2 rounded-md border border-line bg-surface px-3 text-sm font-medium;
+    @apply inline-flex min-h-[36px] items-center gap-2 rounded-full border border-line bg-surface px-3.5 text-sm font-medium;
+  }
+
+  /* Arrow that nudges on hover of its parent .group */
+  .nudge {
+    @apply transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5;
   }
 }
 
-/* One entrance per element, below the fold only, opacity + 8px (see src/reveal.js).
-   Elements are never hidden before JS has decided they are off-screen. */
+/* ───────────── Motion ─────────────
+   One load sequence in the hero (CSS only, runs before JS), scroll reveals
+   with stagger, and motion that answers the user (hover, dialogs).
+   Everything is off under prefers-reduced-motion. The h1 and the hero photo
+   are never hidden, so LCP does not wait for an animation. */
+
+@keyframes block-in {
+  from {
+    transform: translate(-6%, 8%) rotate(0deg) scale(0.85);
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes line-in {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.hero-block {
+  animation: block-in 900ms cubic-bezier(0.2, 0.8, 0.2, 1) 100ms both;
+}
+
+.hero-card {
+  animation: rise 700ms cubic-bezier(0.2, 0.8, 0.2, 1) 350ms both;
+}
+
+.hero-card .json-line {
+  animation: line-in 380ms ease-out both;
+}
+
+.caret {
+  animation: caret 1s steps(1) 2.4s 4;
+}
+
+dialog[open] {
+  animation: dialog-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-in 260ms ease-out;
+}
+
+dialog.sheet[open] {
+  animation: sheet-in 280ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Scroll reveal (src/reveal.js adds .reveal only to elements below the fold) */
 .reveal {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(24px);
 }
 
 .reveal.is-in {
   opacity: 1;
   transform: none;
   transition:
-    opacity 300ms ease-out,
-    transform 300ms ease-out;
+    opacity 600ms ease-out,
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Timeline rail draws itself when the list scrolls in */
+.rail {
+  transform-origin: top;
+  transition: transform 1400ms cubic-bezier(0.2, 0.8, 0.2, 1) 150ms;
+}
+
+.reveal .rail {
+  transform: scaleY(0);
+}
+
+.reveal.is-in .rail {
+  transform: none;
+}
+
+/* Project screenshot pans to show more of the app on hover / keyboard focus */
+.shot img {
+  object-position: 0% 0%;
+  transition: object-position 3.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shot:hover img,
+.shot:focus-visible img {
+  object-position: 100% 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -159,7 +276,8 @@
     scroll-behavior: auto;
   }
 
-  .reveal {
+  .reveal,
+  .reveal .rail {
     opacity: 1;
     transform: none;
   }
@@ -169,5 +287,7 @@
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

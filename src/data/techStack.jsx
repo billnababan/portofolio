@@ -51,7 +51,7 @@ const logos = {
     "0 0 128 128",
     <>
       <path fill="currentColor" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64c11.2 0 21.7-2.9 30.8-7.9L48.4 55.3v36.6H36.7V40.4h13.1l55.4 79.4C114.9 106 128 86.5 128 64c0-35.3-28.7-64-64-64z" />
-      <path className="fill-paper" d="M88.5 40.4h13v55.4L88.5 80V40.4zm-23.5 0h13v39.2l-13-18.6V40.4z" />
+      <path className="fill-night-2" d="M88.5 40.4h13v55.4L88.5 80V40.4zm-23.5 0h13v39.2l-13-18.6V40.4z" />
     </>,
   ),
   Express: svg(

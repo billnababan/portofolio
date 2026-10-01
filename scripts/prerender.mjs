@@ -12,7 +12,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const distHtml = path.join(root, "dist/index.html");
 const ssrDir = path.join(root, ".ssr");
 
-const { render } = await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
+const { render, heroImageSizes } = await import(pathToFileURL(path.join(ssrDir, "entry-server.js")).href);
 const images = JSON.parse(await fs.readFile(path.join(root, "src/data/images.json"), "utf8"));
 
 let html = await fs.readFile(distHtml, "utf8");
@@ -20,10 +20,10 @@ if (!html.includes("<!--app-html-->") || !html.includes("<!--hero-preload-->")) 
   throw new Error("prerender: placeholders missing from dist/index.html");
 }
 
-// Must match the <Picture name="profile" sizes=...> in Hero.jsx.
+// Same srcset/sizes as the <Picture name="profile"> in Hero.jsx.
 const hero = images.profile;
 const heroSrcset = hero.widths.map((w) => `/img/profile-${w}.${hero.v}.avif ${w}w`).join(", ");
-const heroPreload = `<link rel="preload" as="image" type="image/avif" imagesrcset="${heroSrcset}" imagesizes="(min-width: 1024px) 352px, 112px" fetchpriority="high" />`;
+const heroPreload = `<link rel="preload" as="image" type="image/avif" imagesrcset="${heroSrcset}" imagesizes="${heroImageSizes}" fetchpriority="high" />`;
 
 const appHtml = render();
 if (/\sstyle="/.test(appHtml)) {
