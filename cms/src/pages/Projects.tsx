@@ -61,7 +61,7 @@ export function Projects() {
         title="Projects"
         description={
           <>
-            Featured projects are told as full stories in <em>Two stories</em>; the rest are listed under <em>More work</em>. The order here is the order on the site.
+            Featured projects are told as full stories; the rest are listed under <em>More work</em>. The order here is the order on the site.
           </>
         }
         actions={

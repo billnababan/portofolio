@@ -71,71 +71,75 @@
     ]
   },
   {
-    "id": "global-super-app",
-    "featured": false,
-    "title": "Global Super App",
-    "short": "Super App",
-    "kicker": "",
-    "summary": "One internal platform that runs a logistics group day to day: trucking, depot, warehouse, workshop, purchasing, finance and helpdesk, each as a module behind a single login.",
-    "note": "internal system, used daily across several companies in the group. code is private.",
-    "role": "Fullstack developer: maintains the platform, builds new modules and keeps it fast and reliable.",
-    "image": "superapp-02-modules",
-    "alt": "Super App dashboard with HR announcements, safety bulletins, important forms and a purchase request approval table, next to the same approvals on a phone.",
-    "sourceUrl": "",
+    "id": "kpp-reminders",
+    "featured": true,
+    "title": "Reminder app",
+    "short": "Reminders",
+    "kicker": "case 02 — freelance client",
+    "summary": "Reminders, WhatsApp delivery and document sign-off for Kalimantan Prima Persada.",
+    "note": "client found through my own marketing. scoped with them face to face.",
+    "role": "",
+    "image": "reminderapp-01-dashboard",
+    "alt": "Reminder app dashboard: counts of total, unread, pending and completed reminders, an urgent-items alert and a list of recent reminders.",
+    "sourceUrl": "https://github.com/billnababan/RemindersAppsKppPrima",
     "liveUrl": "",
     "stack": [
-      "PHP",
+      "Node.js",
+      "Express",
       "MySQL",
-      "JavaScript",
-      "jQuery",
-      "Bootstrap",
-      "Android (Java)"
+      "React",
+      "Material UI",
+      "node-cron",
+      "pdf-lib"
     ],
-    "stats": [
-      {
-        "value": "9+",
-        "label": "modules"
-      },
-      {
-        "value": "2",
-        "label": "approval levels"
-      }
-    ],
+    "stats": [],
     "steps": [
       {
-        "label": "what i inherited",
-        "text": "A large PHP platform already in production, built by another developer: nine modules, many databases, little documentation, and people depending on it every day. Some screens hung for seconds, uploads failed at random, and approvals sometimes never reached the approver.",
+        "label": "how it started",
+        "text": "A real freelance project I won through my own marketing — no agency, no platform in between. I met the Kalimantan Prima Persada team several times to understand how they work before writing any code.",
         "flow": [],
         "facts": [],
         "features": []
       },
       {
-        "label": "what i added",
-        "text": "New features built into the existing structure, so they feel like they were always there.",
+        "label": "what i built",
+        "text": "A system that makes sure the right people get the right reminder — and actually see it.",
         "flow": [],
         "facts": [],
-        "features": []
+        "features": [
+          {
+            "title": "Reminders",
+            "text": "Sent to one person or a whole role, tracked from read to completed, with notes."
+          },
+          {
+            "title": "Schedules",
+            "text": "Daily, weekly or monthly at a set time. A scheduler checks every minute and sends them on its own."
+          },
+          {
+            "title": "WhatsApp",
+            "text": "Each reminder also lands on the recipient's WhatsApp, with a delivery log for the admin."
+          },
+          {
+            "title": "E-signature",
+            "text": "Upload a PDF, then sign or reject it. The signature is stamped into the file itself."
+          }
+        ]
       },
       {
-        "label": "what i fixed",
-        "text": "Problems traced to their cause instead of patched on the surface.",
+        "label": "what they got",
+        "text": "A system shaped around their routine, not a template — recurring reminders that run without anyone pressing send, and sign-off that no longer needs paper.",
         "flow": [],
-        "facts": [
-          "Slow job completion in trucking came from blocking network calls; moved them out of the request, so the screen answers straight away.",
-          "Random upload failures were DNS failures to the file server; added fixed resolution and retries with time limits.",
-          "Notifications that silently never arrived now check the phone number first and log every failure.",
-          "An invoice numbering bug at the 1,000th item, and EDI files marked as sent before the email actually went out."
-        ],
+        "facts": [],
         "features": []
       }
     ]
   },
   {
     "id": "business-agent",
-    "featured": false,
+    "featured": true,
     "title": "Business Agent",
     "short": "AI Agent",
-    "kicker": "",
+    "kicker": "case 03 - Business Agent",
     "summary": "Quotations, invoices and receivables for small businesses, with an AI agent that can read and change that data from chat or Telegram, and never changes anything without asking first.",
     "note": "personal project, built end to end. not in use by real customers yet.",
     "role": "Solo build: product design, backend, agent design and frontend.",
@@ -204,65 +208,61 @@
     ]
   },
   {
-    "id": "kpp-reminders",
-    "featured": true,
-    "title": "Reminder app",
-    "short": "Reminders",
-    "kicker": "case 02 — freelance client",
-    "summary": "Reminders, WhatsApp delivery and document sign-off for Kalimantan Prima Persada.",
-    "note": "client found through my own marketing. scoped with them face to face.",
-    "role": "",
-    "image": "reminderapp-01-dashboard",
-    "alt": "Reminder app dashboard: counts of total, unread, pending and completed reminders, an urgent-items alert and a list of recent reminders.",
-    "sourceUrl": "https://github.com/billnababan/RemindersAppsKppPrima",
+    "id": "global-super-app",
+    "featured": false,
+    "title": "Global Super App",
+    "short": "Super App",
+    "kicker": "case 03 - Business Agent",
+    "summary": "One internal platform that runs a logistics group day to day: trucking, depot, warehouse, workshop, purchasing, finance and helpdesk, each as a module behind a single login.",
+    "note": "internal system, used daily across several companies in the group. code is private.",
+    "role": "Fullstack developer: maintains the platform, builds new modules and keeps it fast and reliable.",
+    "image": "superapp-02-modules",
+    "alt": "Super App dashboard with HR announcements, safety bulletins, important forms and a purchase request approval table, next to the same approvals on a phone.",
+    "sourceUrl": "",
     "liveUrl": "",
     "stack": [
-      "Node.js",
-      "Express",
+      "PHP",
       "MySQL",
-      "React",
-      "Material UI",
-      "node-cron",
-      "pdf-lib"
+      "JavaScript",
+      "jQuery",
+      "Bootstrap",
+      "Android (Java)"
     ],
-    "stats": [],
+    "stats": [
+      {
+        "value": "9+",
+        "label": "modules"
+      },
+      {
+        "value": "2",
+        "label": "approval levels"
+      }
+    ],
     "steps": [
       {
-        "label": "how it started",
-        "text": "A real freelance project I won through my own marketing — no agency, no platform in between. I met the Kalimantan Prima Persada team several times to understand how they work before writing any code.",
+        "label": "what i inherited",
+        "text": "A large PHP platform already in production, built by another developer: nine modules, many databases, little documentation, and people depending on it every day. Some screens hung for seconds, uploads failed at random, and approvals sometimes never reached the approver.",
         "flow": [],
         "facts": [],
         "features": []
       },
       {
-        "label": "what i built",
-        "text": "A system that makes sure the right people get the right reminder — and actually see it.",
+        "label": "what i added",
+        "text": "New features built into the existing structure, so they feel like they were always there.",
         "flow": [],
         "facts": [],
-        "features": [
-          {
-            "title": "Reminders",
-            "text": "Sent to one person or a whole role, tracked from read to completed, with notes."
-          },
-          {
-            "title": "Schedules",
-            "text": "Daily, weekly or monthly at a set time. A scheduler checks every minute and sends them on its own."
-          },
-          {
-            "title": "WhatsApp",
-            "text": "Each reminder also lands on the recipient's WhatsApp, with a delivery log for the admin."
-          },
-          {
-            "title": "E-signature",
-            "text": "Upload a PDF, then sign or reject it. The signature is stamped into the file itself."
-          }
-        ]
+        "features": []
       },
       {
-        "label": "what they got",
-        "text": "A system shaped around their routine, not a template — recurring reminders that run without anyone pressing send, and sign-off that no longer needs paper.",
+        "label": "what i fixed",
+        "text": "Problems traced to their cause instead of patched on the surface.",
         "flow": [],
-        "facts": [],
+        "facts": [
+          "Slow job completion in trucking came from blocking network calls; moved them out of the request, so the screen answers straight away.",
+          "Random upload failures were DNS failures to the file server; added fixed resolution and retries with time limits.",
+          "Notifications that silently never arrived now check the phone number first and log every failure.",
+          "An invoice numbering bug at the 1,000th item, and EDI files marked as sent before the email actually went out."
+        ],
         "features": []
       }
     ]
