@@ -1,0 +1,82 @@
+{
+  "person": {
+    "name": "Bill Jeferson Nababan",
+    "shortName": "Bill Jeferson",
+    "role": "Fullstack Developer",
+    "location": "Batam, Indonesia",
+    "availability": "open to freelance & full-time",
+    "email": "billnbbn@gmail.com",
+    "phone": {
+      "display": "+62 895-3834-18428",
+      "href": "tel:+62895383418428"
+    },
+    "cv": {
+      "href": "/images/CV_BillJeferson.pdf",
+      "size": "143 KB"
+    },
+    "timezone": "WIB · UTC+7"
+  },
+  "social": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/billnababan"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/bill-jeferson-nababan-4878a9244/"
+    },
+    {
+      "label": "Instagram",
+      "href": "https://www.instagram.com/bill_jeferson/"
+    }
+  ],
+  "hero": {
+    "image": "portrait",
+    "imageAlt": "Portrait of Bill Jeferson Nababan",
+    "taglineTop": "from the database table",
+    "taglineBottom": "to the screen people click"
+  },
+  "marquee": [
+    "Database",
+    "API",
+    "Interface",
+    "MySQL",
+    "Express",
+    "React",
+    "PostgreSQL",
+    "Laravel"
+  ],
+  "story": {
+    "struck": [
+      "Frontend",
+      "Backend"
+    ],
+    "now": "Fullstack.",
+    "lede": "I used to pick a side. Now I take a feature the whole way — from the database table to the screen people click.",
+    "paragraphs": [
+      "I'm a web developer in Batam, Indonesia. I studied Informatics Engineering at Batam State Polytechnic (Politeknik Negeri Batam).",
+      "What I like most is taking work that still runs on paper and turning it into a system people use every day. The two stories below are the clearest examples."
+    ]
+  },
+  "work": {
+    "title": "Two stories",
+    "note": "the problem, what i built, and what changed.",
+    "moreTitle": "More work",
+    "moreNote": "smaller and team projects. open one to see it full size."
+  },
+  "skills": {
+    "title": "Table to screen",
+    "note": "my skills, in the order a request travels: data first, then the api, then the interface."
+  },
+  "certifications": {
+    "title": "Certifications",
+    "note": "in the order i earned them. open one to read it, or check it at the issuer."
+  },
+  "contact": {
+    "eyebrow": "next chapter",
+    "title": "Still running on paper?",
+    "lede": "If your team still tracks work by hand, or needs a system shaped around how it actually works —",
+    "ledeStrong": "let's talk.",
+    "messageLabel": "what are you running on paper?"
+  }
+}

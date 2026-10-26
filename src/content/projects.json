@@ -1,0 +1,227 @@
+[
+  {
+    "id": "edepot",
+    "featured": true,
+    "title": "E-Depot",
+    "short": "E-Depot",
+    "kicker": "case 01 — operations system",
+    "summary": "The whole life of a container in a depot, from the order to the gate out, in one system.",
+    "note": "",
+    "role": "",
+    "image": "project-edepot",
+    "alt": "Container in/out screen: search results for a container number and a gate-in photo timeline for that container.",
+    "sourceUrl": "",
+    "liveUrl": "",
+    "stack": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "React",
+      "Tailwind CSS"
+    ],
+    "stats": [
+      {
+        "value": "6",
+        "label": "depots"
+      },
+      {
+        "value": "4+",
+        "label": "roles"
+      },
+      {
+        "value": "200+",
+        "label": "api endpoints"
+      }
+    ],
+    "steps": [
+      {
+        "label": "the problem",
+        "text": "Every container going in or out of the depot was recorded by hand. The order, the gate, the inspection, the repair and the paperwork all lived on different sheets of paper.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      },
+      {
+        "label": "what i built",
+        "text": "One flow that follows the container through every stage, so each person on the floor picks it up where the last one left off.",
+        "flow": [
+          "Storing order",
+          "Gate in",
+          "Survey + photos",
+          "Estimate of repair",
+          "PTI",
+          "Yard block & tier",
+          "Delivery order",
+          "Gate out + surat jalan"
+        ],
+        "facts": [
+          "Each user only sees their own depots, shipping lines and menus — admin, surveyor, tally, QC and the roles around them.",
+          "Repair estimates are priced from the M&R tariff per shipping line, with damage photos attached.",
+          "Bulk storing orders come in from Excel; every container's photos download as one zip."
+        ],
+        "features": []
+      },
+      {
+        "label": "what changed",
+        "text": "In and out are digital end to end, and the reports — stock, moves in and out, dwell time with monthly trends — come straight from the data. Dozens of people use it across six depots, each with its own staff and routine.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "kpp-reminders",
+    "featured": true,
+    "title": "Reminder app",
+    "short": "Reminders",
+    "kicker": "case 02 — freelance client",
+    "summary": "Reminders, WhatsApp delivery and document sign-off for Kalimantan Prima Persada.",
+    "note": "client found through my own marketing. scoped with them face to face.",
+    "role": "",
+    "image": "project-kpp-reminders",
+    "alt": "Reminder app dashboard: counts of total, unread, pending and completed reminders, an urgent-items alert and a list of recent reminders.",
+    "sourceUrl": "https://github.com/billnababan/RemindersAppsKppPrima",
+    "liveUrl": "",
+    "stack": [
+      "Node.js",
+      "Express",
+      "MySQL",
+      "React",
+      "Material UI",
+      "node-cron",
+      "pdf-lib"
+    ],
+    "stats": [],
+    "steps": [
+      {
+        "label": "how it started",
+        "text": "A real freelance project I won through my own marketing — no agency, no platform in between. I met the Kalimantan Prima Persada team several times to understand how they work before writing any code.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      },
+      {
+        "label": "what i built",
+        "text": "A system that makes sure the right people get the right reminder — and actually see it.",
+        "flow": [],
+        "facts": [],
+        "features": [
+          {
+            "title": "Reminders",
+            "text": "Sent to one person or a whole role, tracked from read to completed, with notes."
+          },
+          {
+            "title": "Schedules",
+            "text": "Daily, weekly or monthly at a set time. A scheduler checks every minute and sends them on its own."
+          },
+          {
+            "title": "WhatsApp",
+            "text": "Each reminder also lands on the recipient's WhatsApp, with a delivery log for the admin."
+          },
+          {
+            "title": "E-signature",
+            "text": "Upload a PDF, then sign or reject it. The signature is stamped into the file itself."
+          }
+        ]
+      },
+      {
+        "label": "what they got",
+        "text": "A system shaped around their routine, not a template — recurring reminders that run without anyone pressing send, and sign-off that no longer needs paper.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "taskflow",
+    "featured": false,
+    "title": "TaskFlow — task management system",
+    "short": "TaskFlow",
+    "kicker": "",
+    "summary": "Task management platform for teams: real-time updates over WebSocket, role-based access control, task assignment with deadline tracking, and email notifications.",
+    "note": "",
+    "role": "",
+    "image": "project-taskflow",
+    "alt": "Task detail page showing status, assignee, start and due dates, and a real-time team discussion thread.",
+    "sourceUrl": "https://github.com/billnababan/WebBasedProjecAndAssigmentClient",
+    "liveUrl": "",
+    "stack": [
+      "React",
+      "Express",
+      "MySQL",
+      "Tailwind CSS",
+      "Socket.io"
+    ],
+    "stats": [],
+    "steps": []
+  },
+  {
+    "id": "trufflehog",
+    "featured": false,
+    "title": "Trufflehog repository scanner",
+    "short": "Trufflehog",
+    "kicker": "",
+    "summary": "Web app that runs Trufflehog against a codebase to detect sensitive information committed to it.",
+    "note": "",
+    "role": "",
+    "image": "project-trufflehog",
+    "alt": "Landing page of the scanner with a “Check your repository” call to action and an explanation of what Trufflehog does.",
+    "sourceUrl": "https://github.com/billnababan/Client-Scan",
+    "liveUrl": "",
+    "stack": [
+      "React",
+      "Express",
+      "MySQL",
+      "Tailwind CSS",
+      "Material UI"
+    ],
+    "stats": [],
+    "steps": []
+  },
+  {
+    "id": "collaboration",
+    "featured": false,
+    "title": "Web-based project collaboration",
+    "short": "Collab",
+    "kicker": "",
+    "summary": "Management system for tasks and collaborative projects.",
+    "note": "",
+    "role": "Back-end developer — all server-side logic and the database architecture.",
+    "image": "project-collaboration",
+    "alt": "Manager dashboard listing tasks with their status and due dates.",
+    "sourceUrl": "https://github.com/billnababan/WebBasedProjecAndAssigmentServer",
+    "liveUrl": "",
+    "stack": [
+      "Express",
+      "MySQL",
+      "React",
+      "Tailwind CSS"
+    ],
+    "stats": [],
+    "steps": []
+  },
+  {
+    "id": "minutes-archive",
+    "featured": false,
+    "title": "Minutes archiving site (Next.js)",
+    "short": "Minutes",
+    "kicker": "",
+    "summary": "Website for archiving meeting minutes, built for the faculty in a project-based learning group.",
+    "note": "",
+    "role": "Back-end developer in a project-based learning team.",
+    "image": "project-nextjs",
+    "alt": "User management page listing users with add and delete actions.",
+    "sourceUrl": "https://github.com/billnababan/next-js-simpel-project",
+    "liveUrl": "",
+    "stack": [
+      "Next.js",
+      "JavaScript",
+      "MySQL",
+      "Tailwind CSS"
+    ],
+    "stats": [],
+    "steps": []
+  }
+]

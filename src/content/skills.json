@@ -1,0 +1,98 @@
+[
+  {
+    "title": "The table",
+    "sub": "where every feature starts",
+    "items": [
+      {
+        "name": "MySQL",
+        "tag": "sql"
+      },
+      {
+        "name": "PostgreSQL",
+        "tag": "sql"
+      },
+      {
+        "name": "MongoDB",
+        "tag": "nosql"
+      },
+      {
+        "name": "SQL",
+        "tag": "language"
+      }
+    ]
+  },
+  {
+    "title": "The API",
+    "sub": "the logic in the middle",
+    "items": [
+      {
+        "name": "Node.js",
+        "tag": "runtime"
+      },
+      {
+        "name": "Express",
+        "tag": "framework"
+      },
+      {
+        "name": "Laravel",
+        "tag": "framework"
+      },
+      {
+        "name": "PHP",
+        "tag": "language"
+      },
+      {
+        "name": "REST APIs",
+        "tag": "design"
+      },
+      {
+        "name": "Socket.io",
+        "tag": "realtime"
+      }
+    ]
+  },
+  {
+    "title": "The screen",
+    "sub": "what people actually click",
+    "items": [
+      {
+        "name": "React",
+        "tag": "library"
+      },
+      {
+        "name": "Next.js",
+        "tag": "framework"
+      },
+      {
+        "name": "JavaScript",
+        "tag": "language"
+      },
+      {
+        "name": "Tailwind CSS",
+        "tag": "styling"
+      },
+      {
+        "name": "Bootstrap",
+        "tag": "styling"
+      },
+      {
+        "name": "HTML, CSS",
+        "tag": "language"
+      }
+    ]
+  },
+  {
+    "title": "Underneath",
+    "sub": "what keeps it running",
+    "items": [
+      {
+        "name": "Linux (RHEL)",
+        "tag": "system"
+      },
+      {
+        "name": "VS Code",
+        "tag": "editor"
+      }
+    ]
+  }
+]

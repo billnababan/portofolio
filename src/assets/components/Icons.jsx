@@ -48,6 +48,18 @@ export const Menu = (p) => (
   </Icon>
 );
 
+export const ArrowDown = (p) => (
+  <Icon {...p}>
+    <path d="M12 5v14M5 12l7 7 7-7" />
+  </Icon>
+);
+
+export const Plus = (p) => (
+  <Icon {...p}>
+    <path d="M12 5v14M5 12h14" />
+  </Icon>
+);
+
 
 
 // Brand marks (filled). Decorative: links carry their own text label.

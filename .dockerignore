@@ -1,0 +1,8 @@
+**/node_modules
+**/dist
+**/.env
+server/storage
+server/tests
+dist
+public
+src

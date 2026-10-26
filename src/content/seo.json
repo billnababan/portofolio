@@ -1,0 +1,34 @@
+{
+  "siteUrl": "https://billjeferson.vercel.app",
+  "title": "Bill Jeferson Nababan — Fullstack Developer in Batam",
+  "description": "Fullstack developer in Batam, Indonesia. I take features from the database table to the screen: Node.js/Express APIs, React front ends, MySQL.",
+  "keywords": [
+    "fullstack developer batam",
+    "web developer batam",
+    "bill jeferson",
+    "node.js express developer",
+    "react developer indonesia"
+  ],
+  "ogImage": "/og.jpg",
+  "ogImageAlt": "Bill Jeferson Nababan, fullstack developer — portrait with name and stack",
+  "robotsIndex": true,
+  "googleVerification": "qx1NHkjPkzHedslzbUCIzIR1-BBW2WynFEvfhR1Tvwo",
+  "jobTitle": "Fullstack Developer",
+  "alumniOf": "Batam State Polytechnic",
+  "knowsAbout": [
+    "Node.js",
+    "Express",
+    "React",
+    "Next.js",
+    "JavaScript",
+    "PHP",
+    "Laravel",
+    "MySQL",
+    "PostgreSQL",
+    "MongoDB",
+    "SQL",
+    "REST APIs",
+    "Tailwind CSS"
+  ],
+  "updatedAt": "2026-10-01T13:41:15.000Z"
+}

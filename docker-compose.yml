@@ -1,0 +1,37 @@
+# docker compose --env-file server/.env up -d   → CMS on http://127.0.0.1:4000 (put nginx/aaPanel in front)
+# Uses server/.env (copy server/.env.example) plus DB_ROOT_PASSWORD. DB_HOST is overridden below.
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_NAME:-portfolio}
+      MYSQL_USER: ${DB_USER:-portfolio}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?set DB_ROOT_PASSWORD in .env}
+    volumes:
+      - mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1"]
+      interval: 5s
+      retries: 20
+
+  cms:
+    build: .
+    restart: unless-stopped
+    env_file: server/.env
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_PORT: 3306
+    ports:
+      - "127.0.0.1:4000:4000"
+    volumes:
+      - media:/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  mysql:
+  media:
