@@ -8,7 +8,7 @@
     "summary": "The whole life of a container in a depot, from the order to the gate out, in one system.",
     "note": "",
     "role": "",
-    "image": "project-edepot",
+    "image": "edepot-01-dashboard",
     "alt": "Container in/out screen: search results for a container number and a gate-in photo timeline for that container.",
     "sourceUrl": "",
     "liveUrl": "",
@@ -71,6 +71,139 @@
     ]
   },
   {
+    "id": "global-super-app",
+    "featured": false,
+    "title": "Global Super App",
+    "short": "Super App",
+    "kicker": "",
+    "summary": "One internal platform that runs a logistics group day to day: trucking, depot, warehouse, workshop, purchasing, finance and helpdesk, each as a module behind a single login.",
+    "note": "internal system, used daily across several companies in the group. code is private.",
+    "role": "Fullstack developer: maintains the platform, builds new modules and keeps it fast and reliable.",
+    "image": "superapp-02-modules",
+    "alt": "Super App dashboard with HR announcements, safety bulletins, important forms and a purchase request approval table, next to the same approvals on a phone.",
+    "sourceUrl": "",
+    "liveUrl": "",
+    "stack": [
+      "PHP",
+      "MySQL",
+      "JavaScript",
+      "jQuery",
+      "Bootstrap",
+      "Android (Java)"
+    ],
+    "stats": [
+      {
+        "value": "9+",
+        "label": "modules"
+      },
+      {
+        "value": "2",
+        "label": "approval levels"
+      }
+    ],
+    "steps": [
+      {
+        "label": "what i inherited",
+        "text": "A large PHP platform already in production, built by another developer: nine modules, many databases, little documentation, and people depending on it every day. Some screens hung for seconds, uploads failed at random, and approvals sometimes never reached the approver.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      },
+      {
+        "label": "what i added",
+        "text": "New features built into the existing structure, so they feel like they were always there.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      },
+      {
+        "label": "what i fixed",
+        "text": "Problems traced to their cause instead of patched on the surface.",
+        "flow": [],
+        "facts": [
+          "Slow job completion in trucking came from blocking network calls; moved them out of the request, so the screen answers straight away.",
+          "Random upload failures were DNS failures to the file server; added fixed resolution and retries with time limits.",
+          "Notifications that silently never arrived now check the phone number first and log every failure.",
+          "An invoice numbering bug at the 1,000th item, and EDI files marked as sent before the email actually went out."
+        ],
+        "features": []
+      }
+    ]
+  },
+  {
+    "id": "business-agent",
+    "featured": false,
+    "title": "Business Agent",
+    "short": "AI Agent",
+    "kicker": "",
+    "summary": "Quotations, invoices and receivables for small businesses, with an AI agent that can read and change that data from chat or Telegram, and never changes anything without asking first.",
+    "note": "personal project, built end to end. not in use by real customers yet.",
+    "role": "Solo build: product design, backend, agent design and frontend.",
+    "image": "businessagent-01-agent",
+    "alt": "Agent Playground: the agent looks up a customer and products, shows a quotation summary and waits for approval; after the user says yes it creates the quotation. Same flow on a phone.",
+    "sourceUrl": "",
+    "liveUrl": "",
+    "stack": [
+      "Node.js",
+      "Express",
+      "TypeScript",
+      "MySQL",
+      "React",
+      "Tailwind CSS",
+      "Gemini API",
+      "Telegram Bot API"
+    ],
+    "stats": [
+      {
+        "value": "14",
+        "label": "agent tools"
+      },
+      {
+        "value": "5",
+        "label": "need approval"
+      },
+      {
+        "value": "32",
+        "label": "tables"
+      }
+    ],
+    "steps": [
+      {
+        "label": "the problem",
+        "text": "Small businesses keep quotations in Word, invoices in Excel and who still owes money in their head. An AI assistant could help, but one that can write to the books must never act on a misunderstanding.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      },
+      {
+        "label": "what i built",
+        "text": "A normal web app for customers, products, quotations, invoices and reports, plus an agent that uses the same business rules through a set of tools.",
+        "flow": [
+          "User message",
+          "LLM picks a tool",
+          "Permission check",
+          "Read: run and answer",
+          "Write: hold and summarise",
+          "User approves",
+          "Backend runs it",
+          "Audit log"
+        ],
+        "facts": [
+          "Actions that change data are never run when the model asks for them. The backend stores them, shows a summary, and code — not the model — decides whether the next message is a yes.",
+          "If a reply mentions a quotation or invoice number that does not exist, the reply is held back instead of shown, so made-up documents never reach the user."
+        ],
+        "features": []
+      },
+      {
+        "label": "around the agent",
+        "text": "The parts that make it usable day to day, not just in a demo.",
+        "flow": [],
+        "facts": [],
+        "features": []
+      }
+    ]
+  },
+  {
     "id": "kpp-reminders",
     "featured": true,
     "title": "Reminder app",
@@ -79,7 +212,7 @@
     "summary": "Reminders, WhatsApp delivery and document sign-off for Kalimantan Prima Persada.",
     "note": "client found through my own marketing. scoped with them face to face.",
     "role": "",
-    "image": "project-kpp-reminders",
+    "image": "reminderapp-01-dashboard",
     "alt": "Reminder app dashboard: counts of total, unread, pending and completed reminders, an urgent-items alert and a list of recent reminders.",
     "sourceUrl": "https://github.com/billnababan/RemindersAppsKppPrima",
     "liveUrl": "",
@@ -135,29 +268,6 @@
     ]
   },
   {
-    "id": "taskflow",
-    "featured": false,
-    "title": "TaskFlow — task management system",
-    "short": "TaskFlow",
-    "kicker": "",
-    "summary": "Task management platform for teams: real-time updates over WebSocket, role-based access control, task assignment with deadline tracking, and email notifications.",
-    "note": "",
-    "role": "",
-    "image": "project-taskflow",
-    "alt": "Task detail page showing status, assignee, start and due dates, and a real-time team discussion thread.",
-    "sourceUrl": "https://github.com/billnababan/WebBasedProjecAndAssigmentClient",
-    "liveUrl": "",
-    "stack": [
-      "React",
-      "Express",
-      "MySQL",
-      "Tailwind CSS",
-      "Socket.io"
-    ],
-    "stats": [],
-    "steps": []
-  },
-  {
     "id": "trufflehog",
     "featured": false,
     "title": "Trufflehog repository scanner",
@@ -166,7 +276,7 @@
     "summary": "Web app that runs Trufflehog against a codebase to detect sensitive information committed to it.",
     "note": "",
     "role": "",
-    "image": "project-trufflehog",
+    "image": "trufflehog-01-findings",
     "alt": "Landing page of the scanner with a “Check your repository” call to action and an explanation of what Trufflehog does.",
     "sourceUrl": "https://github.com/billnababan/Client-Scan",
     "liveUrl": "",
@@ -181,45 +291,24 @@
     "steps": []
   },
   {
-    "id": "collaboration",
+    "id": "taskflow",
     "featured": false,
-    "title": "Web-based project collaboration",
-    "short": "Collab",
+    "title": "TaskFlow — task management system",
+    "short": "TaskFlow",
     "kicker": "",
-    "summary": "Management system for tasks and collaborative projects.",
+    "summary": "Task management platform for teams: real-time updates over WebSocket, role-based access control, task assignment with deadline tracking, and email notifications.",
     "note": "",
-    "role": "Back-end developer — all server-side logic and the database architecture.",
-    "image": "project-collaboration",
-    "alt": "Manager dashboard listing tasks with their status and due dates.",
-    "sourceUrl": "https://github.com/billnababan/WebBasedProjecAndAssigmentServer",
+    "role": "",
+    "image": "friendlyweb-04-shell-auth",
+    "alt": "Task detail page showing status, assignee, start and due dates, and a real-time team discussion thread.",
+    "sourceUrl": "https://github.com/billnababan/WebBasedProjecAndAssigmentClient",
     "liveUrl": "",
     "stack": [
+      "React",
       "Express",
       "MySQL",
-      "React",
-      "Tailwind CSS"
-    ],
-    "stats": [],
-    "steps": []
-  },
-  {
-    "id": "minutes-archive",
-    "featured": false,
-    "title": "Minutes archiving site (Next.js)",
-    "short": "Minutes",
-    "kicker": "",
-    "summary": "Website for archiving meeting minutes, built for the faculty in a project-based learning group.",
-    "note": "",
-    "role": "Back-end developer in a project-based learning team.",
-    "image": "project-nextjs",
-    "alt": "User management page listing users with add and delete actions.",
-    "sourceUrl": "https://github.com/billnababan/next-js-simpel-project",
-    "liveUrl": "",
-    "stack": [
-      "Next.js",
-      "JavaScript",
-      "MySQL",
-      "Tailwind CSS"
+      "Tailwind CSS",
+      "Socket.io"
     ],
     "stats": [],
     "steps": []
